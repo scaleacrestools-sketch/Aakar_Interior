@@ -158,24 +158,24 @@ export default function ContactPage() {
             </section>
 
             {/* Main Contact Section */}
-            <section className="w-full py-8 sm:py-12 md:py-16 lg:py-20">
+            <section className="w-full py-6 sm:py-8 md:py-10 lg:py-12">
                 <div className="max-w-7xl mx-auto px-4 md:px-6">
-                    <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 sm:gap-12">
+                    <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8">
                         {/* Contact Form - Takes 3 columns */}
-                        <div className="lg:col-span-3 bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-xl border border-black/5">
-                            <div className="flex items-center gap-3 mb-6">
+                        <div className="lg:col-span-3 bg-white p-5 sm:p-6 md:p-8 rounded-xl shadow-xl border border-black/5">
+                            <div className="flex items-center gap-3 mb-4">
                                 <div className="w-1 h-8 bg-gradient-to-b from-[#8B6914] to-[#4A90E2] rounded-full"></div>
                                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-black">
                                     Send us a Message
                                 </h2>
                             </div>
-                            <p className="text-sm sm:text-base text-black/70 mb-6 sm:mb-8">
+                            <p className="text-sm sm:text-base text-black/70 mb-5 sm:mb-6">
                                 Fill out the form below and we'll get back to you within 24 hours.
                             </p>
 
-                            <form onSubmit={handleSubmit} className="space-y-5">
+                            <form onSubmit={handleSubmit} className="space-y-4">
                                 {/* Name & Email in Row */}
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div className="relative">
                                         <label
                                             htmlFor="name"
@@ -224,7 +224,7 @@ export default function ContactPage() {
                                 </div>
 
                                 {/* Phone & Service in Row */}
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div className="relative">
                                         <label
                                             htmlFor="phone"
@@ -305,7 +305,7 @@ export default function ContactPage() {
                                 {/* Submit Button */}
                                 <button
                                     type="submit"
-                                    className="w-full bg-gradient-to-r from-[#8B6914] to-[#4A90E2] text-white py-4 rounded-lg font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-2 group text-base"
+                                    className="w-full bg-gradient-to-r from-[#8B6914] to-[#4A90E2] text-white py-3.5 rounded-lg font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-2 group text-base"
                                 >
                                     <span>Send Message</span>
                                     <svg
@@ -326,14 +326,14 @@ export default function ContactPage() {
                         </div>
 
                         {/* Sidebar - Takes 2 columns */}
-                        <div className="lg:col-span-2 space-y-6">
+                        <div className="lg:col-span-2 space-y-5">
                             {/* Why Choose Us */}
-                            <div className="bg-gradient-to-br from-[#1C1C1C] to-[#2C2C2C] p-6 sm:p-8 rounded-xl shadow-xl text-white">
-                                <h3 className="text-xl sm:text-2xl font-serif mb-6 flex items-center gap-3">
+                            <div className="bg-gradient-to-br from-[#1C1C1C] to-[#2C2C2C] p-5 sm:p-6 rounded-xl shadow-xl text-white">
+                                <h3 className="text-xl sm:text-2xl font-serif mb-4 flex items-center gap-3">
                                     <span className="w-1 h-8 bg-gradient-to-b from-[#F4D03F] to-[#4A90E2] rounded-full"></span>
                                     Why Choose Aakar?
                                 </h3>
-                                <ul className="space-y-4">
+                                <ul className="space-y-3">
                                     {[
                                         "38+ Years of Design Excellence",
                                         "1000+ Successful Projects",
@@ -350,8 +350,8 @@ export default function ContactPage() {
                             </div>
 
                             {/* Social Media */}
-                            <div className="bg-white p-6 sm:p-8 rounded-xl shadow-xl border border-black/5">
-                                <h3 className="text-xl sm:text-2xl font-serif mb-6 text-black flex items-center gap-3">
+                            <div className="bg-white p-5 sm:p-6 rounded-xl shadow-xl border border-black/5">
+                                <h3 className="text-xl sm:text-2xl font-serif mb-4 text-black flex items-center gap-3">
                                     <span className="w-1 h-8 bg-gradient-to-b from-[#8B6914] to-[#4A90E2] rounded-full"></span>
                                     Connect With Us
                                 </h3>
@@ -380,7 +380,7 @@ export default function ContactPage() {
                             </div>
 
                             {/* Quick Response */}
-                            <div className="bg-gradient-to-br from-[#8B6914] to-[#4A90E2] p-6 rounded-xl shadow-xl text-white">
+                            <div className="bg-gradient-to-br from-[#8B6914] to-[#4A90E2] p-5 rounded-xl shadow-xl text-white">
                                 <div className="flex items-start gap-4">
                                     <svg className="w-8 h-8 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
