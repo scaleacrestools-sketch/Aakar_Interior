@@ -391,7 +391,7 @@ export default function Home() {
                   alt="Awards"
                   width={200}
                   height={400}
-                  className="h-full w-auto object-contain"
+                  className="h-full w-auto object-contain -rotate-270 md:rotate-0 ml-4 sm:ml-12 md:ml-0"
                 />
               </div>
               <div className="h-px w-4 sm:w-6 md:w-8 bg-gray-600"></div>
@@ -492,7 +492,7 @@ export default function Home() {
                 {selectedService === "color" && (
                   <div className="relative w-full h-64 sm:h-80 md:h-96 rounded-lg overflow-hidden shadow-lg">
                     <Image
-                      src="/project.webp"
+                      src="/demo2-slide-01.jpg"
                       alt="Color Consultation"
                       fill
                       className="object-cover"
@@ -1236,13 +1236,16 @@ export default function Home() {
                 YOUR INTERIOR
               </h2>
 
-              <div className="relative w-full sm:w-[80%] md:w-[70%] lg:w-[60%] h-[300px] sm:h-[350px] md:h-[400px] rounded-md overflow-hidden shadow-lg z-10 lg:-mb-24">
+              <div className="relative w-full sm:w-[85%] md:w-[75%] lg:w-[65%] h-[280px] sm:h-[380px] md:h-[450px] lg:h-[540px] rounded-xl overflow-hidden shadow-2xl z-10 lg:-mb-24">
                 <Image
-                  src="/Image-Section.png" // replace with your image
+                  src="/imgi_44_service06-768x569-1.png"
                   alt="Interior Design"
                   fill
-                  className="object-cover "
+                  className="object-cover hover:scale-105 transition-transform duration-700"
+                  priority
                 />
+                {/* Subtle overlay for depth */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none"></div>
               </div>
             </div>
           </div>
