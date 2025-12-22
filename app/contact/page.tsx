@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Header from "../components/Header";
 
 export default function ContactPage() {
     const [isVisible, setIsVisible] = useState(false);
@@ -23,6 +24,7 @@ export default function ContactPage() {
         e.preventDefault();
         // Handle form submission
         console.log("Form submitted:", formData);
+        alert("Thank you for your message! We'll get back to you soon.");
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -34,25 +36,42 @@ export default function ContactPage() {
 
     const contactInfo = [
         {
-            icon: "📍",
+            icon: (
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+            ),
             title: "Visit Us",
-            details: ["123 Design Street", "Creativity City, Country"],
+            details: ["123 Design Street", "New Delhi, India"],
             color: "from-[#8B6914] to-[#A67C00]",
         },
         {
-            icon: "📞",
+            icon: (
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+            ),
             title: "Call Us",
-            details: ["+123-456-7890", "+123-456-7891"],
+            details: ["+91 92660 23436"],
             color: "from-[#4A90E2] to-[#357ABD]",
         },
         {
-            icon: "✉️",
+            icon: (
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+            ),
             title: "Email Us",
-            details: ["hello@aakar.com", "info@aakar.com"],
+            details: ["info@aakarinteriors.com"],
             color: "from-[#8B6914] to-[#4A90E2]",
         },
         {
-            icon: "🕐",
+            icon: (
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            ),
             title: "Working Hours",
             details: ["Mon - Fri: 9AM - 6PM", "Sat: 10AM - 4PM"],
             color: "from-[#4A90E2] to-[#8B6914]",
@@ -62,47 +81,39 @@ export default function ContactPage() {
     return (
         <div className="min-h-screen bg-[#F5F5F0]">
             {/* Header */}
-            <header className="w-full bg-[#F5F5F0] border-b border-black/10">
-                <div className="max-w-[95%] mx-auto px-4 md:px-6 py-4">
-                    <nav className="flex items-center justify-between">
-                        <Link href="/" className="flex items-center gap-3">
-                            <Image
-                                src="/AAKAR-BLACK-scaled.png"
-                                alt="AAKAR Interior"
-                                width={150}
-                                height={39}
-                                className="h-8 md:h-10 lg:h-12 w-auto object-contain"
-                            />
-                        </Link>
-                        <Link
-                            href="/"
-                            className="text-sm md:text-base text-black hover:text-[#4A90E2] transition-colors duration-300"
-                        >
-                            ← Back to Home
-                        </Link>
-                    </nav>
-                </div>
-            </header>
+            <Header />
 
-            {/* Hero Section */}
-            <section className="relative w-full py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden">
-                <div className="max-w-[95%] mx-auto px-4 md:px-6">
+            {/* Hero Section with Background */}
+            <section className="relative w-full py-16 sm:py-20 md:py-24 lg:py-28 overflow-hidden">
+                {/* Background Image */}
+                <div className="absolute inset-0 z-0">
+                    <Image
+                        src="/b5ad278e6d317fa77c460e7201dbb863cf70f692.png"
+                        alt="Contact Background"
+                        fill
+                        className="object-cover"
+                        priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-black/75 via-black/65 to-black/75"></div>
+                </div>
+
+                <div className="max-w-[95%] mx-auto px-4 md:px-6 relative z-10">
                     <div className={`text-center space-y-4 sm:space-y-6 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}>
                         <div className="inline-block">
-                            <span className="text-xs sm:text-sm md:text-base uppercase tracking-widest text-[#8B6914] font-medium">
+                            <span className="text-xs sm:text-sm md:text-base uppercase tracking-widest text-[#F4D03F] font-medium bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
                                 Get In Touch
                             </span>
                         </div>
-                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-black leading-tight">
+                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight drop-shadow-2xl">
                             <span className="block">Let's Create</span>
                             <span className="block mt-2">
                                 Your{" "}
-                                <span className="text-[#8B6914] italic font-[family-name:var(--font-great-vibes)]">
+                                <span className="text-[#F4D03F] italic font-[family-name:var(--font-great-vibes)]">
                                     Dream Space
                                 </span>
                             </span>
                         </h1>
-                        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-black/70 max-w-3xl mx-auto leading-relaxed">
+                        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed drop-shadow-lg">
                             Have a project in mind? We'd love to hear from you. Send us a message and we'll
                             respond as soon as possible.
                         </p>
@@ -110,32 +121,32 @@ export default function ContactPage() {
                 </div>
 
                 {/* Decorative Elements */}
-                <div className="absolute top-10 left-5 sm:left-10 w-16 h-16 sm:w-20 sm:h-20 bg-[#8B6914]/10 rounded-full blur-3xl animate-pulse"></div>
-                <div className="absolute bottom-10 right-5 sm:right-10 w-20 h-20 sm:w-32 sm:h-32 bg-[#4A90E2]/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+                <div className="absolute top-10 left-5 sm:left-10 w-16 h-16 sm:w-20 sm:h-20 bg-[#F4D03F]/20 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute bottom-10 right-5 sm:right-10 w-20 h-20 sm:w-32 sm:h-32 bg-[#4A90E2]/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
             </section>
 
             {/* Contact Info Cards */}
-            <section className="w-full py-8 sm:py-12 md:py-16">
+            <section className="w-full py-8 sm:py-12 md:py-16 -mt-8 relative z-10">
                 <div className="max-w-7xl mx-auto px-4 md:px-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                         {contactInfo.map((info, index) => (
                             <div
                                 key={index}
-                                className="group relative bg-white p-6 sm:p-8 rounded-lg shadow-md hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden"
+                                className="group relative bg-white p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 overflow-hidden border border-black/5"
                                 style={{ animationDelay: `${index * 100}ms` }}
                             >
                                 {/* Gradient Background on Hover */}
-                                <div className={`absolute inset-0 bg-gradient-to-br ${info.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+                                <div className={`absolute inset-0 bg-gradient-to-br ${info.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
 
                                 <div className="relative z-10">
-                                    <div className="text-4xl sm:text-5xl mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
+                                    <div className="text-[#8B6914] group-hover:text-white mb-4 group-hover:scale-110 transition-all duration-300">
                                         {info.icon}
                                     </div>
-                                    <h3 className="text-lg sm:text-xl font-semibold text-black mb-2 sm:mb-3">
+                                    <h3 className="text-lg sm:text-xl font-bold text-black group-hover:text-white mb-3 transition-colors duration-300">
                                         {info.title}
                                     </h3>
                                     {info.details.map((detail, idx) => (
-                                        <p key={idx} className="text-xs sm:text-sm text-black/70">
+                                        <p key={idx} className="text-xs sm:text-sm text-black/70 group-hover:text-white/90 transition-colors duration-300 leading-relaxed">
                                             {detail}
                                         </p>
                                     ))}
@@ -149,117 +160,122 @@ export default function ContactPage() {
             {/* Main Contact Section */}
             <section className="w-full py-8 sm:py-12 md:py-16 lg:py-20">
                 <div className="max-w-7xl mx-auto px-4 md:px-6">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16">
-                        {/* Contact Form */}
-                        <div className="bg-white p-6 sm:p-8 md:p-10 rounded-lg shadow-xl">
-                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-black mb-4 sm:mb-6">
-                                Send us a Message
-                            </h2>
+                    <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 sm:gap-12">
+                        {/* Contact Form - Takes 3 columns */}
+                        <div className="lg:col-span-3 bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-xl border border-black/5">
+                            <div className="flex items-center gap-3 mb-6">
+                                <div className="w-1 h-8 bg-gradient-to-b from-[#8B6914] to-[#4A90E2] rounded-full"></div>
+                                <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-black">
+                                    Send us a Message
+                                </h2>
+                            </div>
                             <p className="text-sm sm:text-base text-black/70 mb-6 sm:mb-8">
                                 Fill out the form below and we'll get back to you within 24 hours.
                             </p>
 
-                            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-                                {/* Name Field */}
-                                <div className="relative">
-                                    <label
-                                        htmlFor="name"
-                                        className={`absolute left-4 transition-all duration-300 pointer-events-none ${focusedField === "name" || formData.name
-                                                ? "-top-2 text-xs bg-white px-2 text-[#8B6914]"
-                                                : "top-3 sm:top-4 text-sm sm:text-base text-black/50"
-                                            }`}
-                                    >
-                                        Your Name *
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        name="name"
-                                        required
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                        onFocus={() => setFocusedField("name")}
-                                        onBlur={() => setFocusedField("")}
-                                        className="w-full px-4 py-3 sm:py-4 border-2 border-black/10 rounded-lg focus:border-[#8B6914] focus:outline-none transition-all duration-300 text-sm sm:text-base"
-                                    />
+                            <form onSubmit={handleSubmit} className="space-y-5">
+                                {/* Name & Email in Row */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                    <div className="relative">
+                                        <label
+                                            htmlFor="name"
+                                            className={`absolute left-4 transition-all duration-300 pointer-events-none ${focusedField === "name" || formData.name
+                                                ? "-top-2.5 text-xs bg-white px-2 text-[#8B6914] font-medium"
+                                                : "top-3.5 text-sm text-black/50"
+                                                }`}
+                                        >
+                                            Your Name *
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="name"
+                                            name="name"
+                                            required
+                                            value={formData.name}
+                                            onChange={handleChange}
+                                            onFocus={() => setFocusedField("name")}
+                                            onBlur={() => setFocusedField("")}
+                                            className="w-full px-4 py-3.5 border-2 border-black/10 rounded-lg focus:border-[#8B6914] focus:outline-none transition-all duration-300 text-sm"
+                                        />
+                                    </div>
+
+                                    <div className="relative">
+                                        <label
+                                            htmlFor="email"
+                                            className={`absolute left-4 transition-all duration-300 pointer-events-none ${focusedField === "email" || formData.email
+                                                ? "-top-2.5 text-xs bg-white px-2 text-[#8B6914] font-medium"
+                                                : "top-3.5 text-sm text-black/50"
+                                                }`}
+                                        >
+                                            Email Address *
+                                        </label>
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            required
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            onFocus={() => setFocusedField("email")}
+                                            onBlur={() => setFocusedField("")}
+                                            className="w-full px-4 py-3.5 border-2 border-black/10 rounded-lg focus:border-[#8B6914] focus:outline-none transition-all duration-300 text-sm"
+                                        />
+                                    </div>
                                 </div>
 
-                                {/* Email Field */}
-                                <div className="relative">
-                                    <label
-                                        htmlFor="email"
-                                        className={`absolute left-4 transition-all duration-300 pointer-events-none ${focusedField === "email" || formData.email
-                                                ? "-top-2 text-xs bg-white px-2 text-[#8B6914]"
-                                                : "top-3 sm:top-4 text-sm sm:text-base text-black/50"
-                                            }`}
-                                    >
-                                        Email Address *
-                                    </label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        required
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        onFocus={() => setFocusedField("email")}
-                                        onBlur={() => setFocusedField("")}
-                                        className="w-full px-4 py-3 sm:py-4 border-2 border-black/10 rounded-lg focus:border-[#8B6914] focus:outline-none transition-all duration-300 text-sm sm:text-base"
-                                    />
-                                </div>
+                                {/* Phone & Service in Row */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                    <div className="relative">
+                                        <label
+                                            htmlFor="phone"
+                                            className={`absolute left-4 transition-all duration-300 pointer-events-none ${focusedField === "phone" || formData.phone
+                                                ? "-top-2.5 text-xs bg-white px-2 text-[#8B6914] font-medium"
+                                                : "top-3.5 text-sm text-black/50"
+                                                }`}
+                                        >
+                                            Phone Number
+                                        </label>
+                                        <input
+                                            type="tel"
+                                            id="phone"
+                                            name="phone"
+                                            value={formData.phone}
+                                            onChange={handleChange}
+                                            onFocus={() => setFocusedField("phone")}
+                                            onBlur={() => setFocusedField("")}
+                                            className="w-full px-4 py-3.5 border-2 border-black/10 rounded-lg focus:border-[#8B6914] focus:outline-none transition-all duration-300 text-sm"
+                                        />
+                                    </div>
 
-                                {/* Phone Field */}
-                                <div className="relative">
-                                    <label
-                                        htmlFor="phone"
-                                        className={`absolute left-4 transition-all duration-300 pointer-events-none ${focusedField === "phone" || formData.phone
-                                                ? "-top-2 text-xs bg-white px-2 text-[#8B6914]"
-                                                : "top-3 sm:top-4 text-sm sm:text-base text-black/50"
-                                            }`}
-                                    >
-                                        Phone Number
-                                    </label>
-                                    <input
-                                        type="tel"
-                                        id="phone"
-                                        name="phone"
-                                        value={formData.phone}
-                                        onChange={handleChange}
-                                        onFocus={() => setFocusedField("phone")}
-                                        onBlur={() => setFocusedField("")}
-                                        className="w-full px-4 py-3 sm:py-4 border-2 border-black/10 rounded-lg focus:border-[#8B6914] focus:outline-none transition-all duration-300 text-sm sm:text-base"
-                                    />
-                                </div>
-
-                                {/* Service Selection */}
-                                <div className="relative">
-                                    <label
-                                        htmlFor="service"
-                                        className={`absolute left-4 transition-all duration-300 pointer-events-none ${focusedField === "service" || formData.service
-                                                ? "-top-2 text-xs bg-white px-2 text-[#8B6914]"
-                                                : "top-3 sm:top-4 text-sm sm:text-base text-black/50"
-                                            }`}
-                                    >
-                                        Service Interested In
-                                    </label>
-                                    <select
-                                        id="service"
-                                        name="service"
-                                        value={formData.service}
-                                        onChange={handleChange}
-                                        onFocus={() => setFocusedField("service")}
-                                        onBlur={() => setFocusedField("")}
-                                        className="w-full px-4 py-3 sm:py-4 border-2 border-black/10 rounded-lg focus:border-[#8B6914] focus:outline-none transition-all duration-300 appearance-none text-sm sm:text-base"
-                                    >
-                                        <option value=""></option>
-                                        <option value="furniture">Furniture Selection</option>
-                                        <option value="space">Space Planning</option>
-                                        <option value="color">Color Consultation</option>
-                                        <option value="interior">Interior Design</option>
-                                        <option value="lighting">Lighting Design</option>
-                                        <option value="renovation">Building Renovation</option>
-                                        <option value="consultation">Project Consultation</option>
-                                    </select>
+                                    <div className="relative">
+                                        <label
+                                            htmlFor="service"
+                                            className={`absolute left-4 transition-all duration-300 pointer-events-none ${focusedField === "service" || formData.service
+                                                ? "-top-2.5 text-xs bg-white px-2 text-[#8B6914] font-medium"
+                                                : "top-3.5 text-sm text-black/50"
+                                                }`}
+                                        >
+                                            Service Interested In
+                                        </label>
+                                        <select
+                                            id="service"
+                                            name="service"
+                                            value={formData.service}
+                                            onChange={handleChange}
+                                            onFocus={() => setFocusedField("service")}
+                                            onBlur={() => setFocusedField("")}
+                                            className="w-full px-4 py-3.5 border-2 border-black/10 rounded-lg focus:border-[#8B6914] focus:outline-none transition-all duration-300 appearance-none text-sm bg-white"
+                                        >
+                                            <option value=""></option>
+                                            <option value="furniture">Furniture Selection</option>
+                                            <option value="space">Space Planning</option>
+                                            <option value="color">Color Consultation</option>
+                                            <option value="interior">Interior Design</option>
+                                            <option value="lighting">Lighting Design</option>
+                                            <option value="renovation">Building Renovation</option>
+                                            <option value="consultation">Project Consultation</option>
+                                        </select>
+                                    </div>
                                 </div>
 
                                 {/* Message Field */}
@@ -267,8 +283,8 @@ export default function ContactPage() {
                                     <label
                                         htmlFor="message"
                                         className={`absolute left-4 transition-all duration-300 pointer-events-none ${focusedField === "message" || formData.message
-                                                ? "-top-2 text-xs bg-white px-2 text-[#8B6914]"
-                                                : "top-3 sm:top-4 text-sm sm:text-base text-black/50"
+                                            ? "-top-2.5 text-xs bg-white px-2 text-[#8B6914] font-medium"
+                                            : "top-3.5 text-sm text-black/50"
                                             }`}
                                     >
                                         Your Message *
@@ -282,18 +298,18 @@ export default function ContactPage() {
                                         onChange={handleChange}
                                         onFocus={() => setFocusedField("message")}
                                         onBlur={() => setFocusedField("")}
-                                        className="w-full px-4 py-3 sm:py-4 border-2 border-black/10 rounded-lg focus:border-[#8B6914] focus:outline-none transition-all duration-300 resize-none text-sm sm:text-base"
+                                        className="w-full px-4 py-3.5 border-2 border-black/10 rounded-lg focus:border-[#8B6914] focus:outline-none transition-all duration-300 resize-none text-sm"
                                     ></textarea>
                                 </div>
 
                                 {/* Submit Button */}
                                 <button
                                     type="submit"
-                                    className="w-full bg-gradient-to-r from-[#8B6914] to-[#4A90E2] text-white py-3 sm:py-4 rounded-lg font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-2 group text-sm sm:text-base"
+                                    className="w-full bg-gradient-to-r from-[#8B6914] to-[#4A90E2] text-white py-4 rounded-lg font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-2 group text-base"
                                 >
                                     <span>Send Message</span>
                                     <svg
-                                        className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform"
+                                        className="w-5 h-5 group-hover:translate-x-1 transition-transform"
                                         fill="none"
                                         stroke="currentColor"
                                         viewBox="0 0 24 24"
@@ -309,25 +325,15 @@ export default function ContactPage() {
                             </form>
                         </div>
 
-                        {/* Map & Additional Info */}
-                        <div className="space-y-6 sm:space-y-8">
-                            {/* Map Placeholder */}
-                            <div className="bg-white p-4 sm:p-6 rounded-lg shadow-xl h-[300px] sm:h-[400px] flex items-center justify-center relative overflow-hidden group">
-                                <div className="absolute inset-0 bg-gradient-to-br from-[#8B6914]/20 to-[#4A90E2]/20"></div>
-                                <div className="relative z-10 text-center">
-                                    <div className="text-5xl sm:text-6xl mb-3 sm:mb-4">📍</div>
-                                    <p className="text-base sm:text-lg font-semibold text-black mb-2">Our Location</p>
-                                    <p className="text-xs sm:text-sm text-black/70">123 Design Street, Creativity City</p>
-                                    <button className="mt-4 px-4 sm:px-6 py-2 bg-black text-white rounded-lg hover:bg-[#8B6914] transition-colors duration-300 text-xs sm:text-sm">
-                                        Open in Maps
-                                    </button>
-                                </div>
-                            </div>
-
+                        {/* Sidebar - Takes 2 columns */}
+                        <div className="lg:col-span-2 space-y-6">
                             {/* Why Choose Us */}
-                            <div className="bg-gradient-to-br from-[#1C1C1C] to-[#2C2C2C] p-6 sm:p-8 rounded-lg shadow-xl text-white">
-                                <h3 className="text-xl sm:text-2xl font-serif mb-4 sm:mb-6">Why Choose Aakar?</h3>
-                                <ul className="space-y-3 sm:space-y-4">
+                            <div className="bg-gradient-to-br from-[#1C1C1C] to-[#2C2C2C] p-6 sm:p-8 rounded-xl shadow-xl text-white">
+                                <h3 className="text-xl sm:text-2xl font-serif mb-6 flex items-center gap-3">
+                                    <span className="w-1 h-8 bg-gradient-to-b from-[#F4D03F] to-[#4A90E2] rounded-full"></span>
+                                    Why Choose Aakar?
+                                </h3>
+                                <ul className="space-y-4">
                                     {[
                                         "38+ Years of Design Excellence",
                                         "1000+ Successful Projects",
@@ -335,66 +341,57 @@ export default function ContactPage() {
                                         "Personalized Design Solutions",
                                         "On-Time Project Delivery",
                                     ].map((item, index) => (
-                                        <li key={index} className="flex items-start gap-3 group">
-                                            <span className="text-[#8B6914] text-lg sm:text-xl group-hover:scale-125 transition-transform">✓</span>
-                                            <span className="text-xs sm:text-sm text-white/90">{item}</span>
+                                        <li key={index} className="flex items-start gap-3 group cursor-default">
+                                            <span className="text-[#F4D03F] text-xl group-hover:scale-125 transition-transform flex-shrink-0 mt-0.5">✓</span>
+                                            <span className="text-sm text-white/90 group-hover:text-white transition-colors">{item}</span>
                                         </li>
                                     ))}
                                 </ul>
                             </div>
 
                             {/* Social Media */}
-                            <div className="bg-white p-6 sm:p-8 rounded-lg shadow-xl">
-                                <h3 className="text-xl sm:text-2xl font-serif mb-4 sm:mb-6 text-black">Follow Us</h3>
-                                <div className="flex gap-3 sm:gap-4">
-                                    {["Instagram", "Facebook", "LinkedIn", "Pinterest"].map((social, index) => (
-                                        <button
-                                            key={index}
-                                            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#F5F5F0] hover:bg-gradient-to-br hover:from-[#8B6914] hover:to-[#4A90E2] hover:text-white transition-all duration-300 flex items-center justify-center text-xs sm:text-sm font-semibold shadow-md hover:shadow-xl transform hover:scale-110"
-                                        >
-                                            {social[0]}
-                                        </button>
-                                    ))}
+                            <div className="bg-white p-6 sm:p-8 rounded-xl shadow-xl border border-black/5">
+                                <h3 className="text-xl sm:text-2xl font-serif mb-6 text-black flex items-center gap-3">
+                                    <span className="w-1 h-8 bg-gradient-to-b from-[#8B6914] to-[#4A90E2] rounded-full"></span>
+                                    Connect With Us
+                                </h3>
+                                <div className="flex gap-3">
+                                    <a
+                                        href="https://www.instagram.com/aakarinterior_?igsh=MXI4bnJxb281MWxzYw=="
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex-1 h-12 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white transition-all duration-300 flex items-center justify-center shadow-md hover:shadow-xl transform hover:scale-105"
+                                    >
+                                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                        </svg>
+                                    </a>
+                                    <a
+                                        href="https://www.linkedin.com/company/aakarinterior/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex-1 h-12 rounded-lg bg-gradient-to-br from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white transition-all duration-300 flex items-center justify-center shadow-md hover:shadow-xl transform hover:scale-105"
+                                    >
+                                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+
+                            {/* Quick Response */}
+                            <div className="bg-gradient-to-br from-[#8B6914] to-[#4A90E2] p-6 rounded-xl shadow-xl text-white">
+                                <div className="flex items-start gap-4">
+                                    <svg className="w-8 h-8 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    </svg>
+                                    <div>
+                                        <h4 className="font-bold text-lg mb-2">Quick Response Guaranteed</h4>
+                                        <p className="text-sm text-white/90">We typically respond to all inquiries within 24 hours during business days.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* FAQ Section */}
-            <section className="w-full py-12 sm:py-16 md:py-20 bg-white">
-                <div className="max-w-4xl mx-auto px-4 md:px-6">
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-black mb-8 sm:mb-12 text-center">
-                        Frequently Asked Questions
-                    </h2>
-                    <div className="space-y-4 sm:space-y-6">
-                        {[
-                            {
-                                q: "How long does a typical project take?",
-                                a: "Project timelines vary based on scope, but most residential projects take 8-12 weeks from concept to completion.",
-                            },
-                            {
-                                q: "Do you offer free consultations?",
-                                a: "Yes! We offer a complimentary initial consultation to discuss your project needs and vision.",
-                            },
-                            {
-                                q: "What is your design process?",
-                                a: "Our process includes consultation, concept development, design refinement, and project execution with regular updates.",
-                            },
-                            {
-                                q: "Do you work on commercial projects?",
-                                a: "Absolutely! We have extensive experience in both residential and commercial interior design projects.",
-                            },
-                        ].map((faq, index) => (
-                            <div
-                                key={index}
-                                className="bg-[#F5F5F0] p-4 sm:p-6 rounded-lg hover:shadow-lg transition-all duration-300"
-                            >
-                                <h4 className="text-base sm:text-lg font-semibold text-black mb-2">{faq.q}</h4>
-                                <p className="text-xs sm:text-sm text-black/70">{faq.a}</p>
-                            </div>
-                        ))}
                     </div>
                 </div>
             </section>

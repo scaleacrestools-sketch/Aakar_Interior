@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Header from "../components/Header";
 
 export default function AboutPage() {
     const [isVisible, setIsVisible] = useState(false);
@@ -46,27 +47,7 @@ export default function AboutPage() {
     return (
         <div className="min-h-screen bg-[#F5F5F0]">
             {/* Header */}
-            <header className="w-full bg-[#F5F5F0] border-b border-black/10">
-                <div className="max-w-[95%] mx-auto px-4 md:px-6 py-4">
-                    <nav className="flex items-center justify-between">
-                        <Link href="/" className="flex items-center gap-3">
-                            <Image
-                                src="/AAKAR-BLACK-scaled.png"
-                                alt="AAKAR Interior"
-                                width={150}
-                                height={39}
-                                className="h-8 md:h-10 lg:h-12 w-auto object-contain"
-                            />
-                        </Link>
-                        <Link
-                            href="/"
-                            className="text-sm md:text-base text-black hover:text-[#4A90E2] transition-colors duration-300"
-                        >
-                            ← Back to Home
-                        </Link>
-                    </nav>
-                </div>
-            </header>
+            <Header />
 
             {/* Hero Section */}
             <section className="relative w-full py-16 sm:py-20 md:py-24 lg:py-32 overflow-hidden">

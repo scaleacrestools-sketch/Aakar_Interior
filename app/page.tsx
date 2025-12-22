@@ -391,7 +391,7 @@ export default function Home() {
                   alt="Awards"
                   width={200}
                   height={400}
-                  className="h-full w-auto object-contain"
+                  className="h-full w-auto object-contain -rotate-270 md:rotate-0 ml-4 sm:ml-12 md:ml-0"
                 />
               </div>
               <div className="h-px w-4 sm:w-6 md:w-8 bg-gray-600"></div>
