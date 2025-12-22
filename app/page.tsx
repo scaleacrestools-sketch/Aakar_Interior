@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import TestimonialSection from "./components/TestimonialSection";
 import Footer from "./components/Footer";
 
@@ -9,6 +10,7 @@ import Footer from "./components/Footer";
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
   const [selectedService, setSelectedService] = useState("furniture");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
@@ -30,41 +32,83 @@ export default function Home() {
                 {/* Logo */}
                 <div className="flex items-center gap-3 animate-fade-in">
                   <Image
-                    src="/AAKAR-COLOR-scaled.png"
+                    src="/AAKAR-BLACK-scaled.png"
                     alt="AAKAR Interior"
                     width={150}
                     height={39}
-                    className="h-12 w-auto object-contain"
+                    className="h-8 md:h-10 lg:h-12 w-auto object-contain"
                   />
                 </div>
 
                 {/* Navigation */}
                 <div className="hidden md:flex items-center gap-8 animate-fade-in-delay">
-                  <a
-                    href="#about"
+                  <Link
+                    href="/about"
                     className="text-black hover:text-[#4A90E2] transition-colors duration-300"
                   >
                     About Us
-                  </a>
+                  </Link>
                   <a
                     href="#services"
                     className="text-black hover:text-[#4A90E2] transition-colors duration-300"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
                   >
                     Services
                   </a>
                   <a
                     href="#portfolio"
                     className="text-black hover:text-[#4A90E2] transition-colors duration-300"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
                   >
                     Portfolio
                   </a>
                 </div>
 
-                {/* Contact Button */}
-                <button className="bg-black text-white px-6 py-3 rounded-sm flex items-center gap-2 hover:bg-[#333] transition-all duration-300 animate-fade-in-delay-2 group">
-                  <span>Contact Us</span>
+                {/* Mobile Menu Button */}
+                <button
+                  className="md:hidden flex items-center justify-center w-10 h-10 rounded-sm hover:bg-black/5 transition-colors"
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  aria-label="Toggle menu"
+                >
                   <svg
-                    className="w-5 h-5 group-hover:scale-110 transition-transform duration-300"
+                    className="w-6 h-6 text-black"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    {mobileMenuOpen ? (
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    ) : (
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M4 6h16M4 12h16M4 18h16"
+                      />
+                    )}
+                  </svg>
+                </button>
+
+                {/* Contact Button */}
+                <Link
+                  href="/contact"
+                  className="hidden md:flex bg-black text-white px-3 py-2 md:px-6 md:py-3 rounded-sm items-center gap-1 md:gap-2 hover:bg-[#333] transition-all duration-300 animate-fade-in-delay-2 group text-sm md:text-base"
+                >
+                  <span className="hidden sm:inline">Contact Us</span>
+                  <span className="sm:hidden">Contact</span>
+                  <svg
+                    className="w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform duration-300"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -76,8 +120,91 @@ export default function Home() {
                       d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                     />
                   </svg>
-                </button>
+                </Link>
               </nav>
+
+              {/* Mobile Menu */}
+              {mobileMenuOpen && (
+                <>
+                  {/* Backdrop */}
+                  <div
+                    className="fixed inset-0 bg-black/50 z-40 md:hidden"
+                    onClick={() => setMobileMenuOpen(false)}
+                  ></div>
+
+                  {/* Menu Panel */}
+                  <div className="fixed top-0 right-0 h-full w-64 bg-white shadow-2xl z-50 md:hidden animate-slide-in-right">
+                    <div className="flex flex-col h-full">
+                      {/* Menu Header */}
+                      <div className="flex items-center justify-between p-4 border-b border-black/10">
+                        <span className="font-semibold text-black">Menu</span>
+                        <button
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="w-8 h-8 flex items-center justify-center rounded-sm hover:bg-black/5 transition-colors"
+                        >
+                          <svg
+                            className="w-5 h-5 text-black"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M6 18L18 6M6 6l12 12"
+                            />
+                          </svg>
+                        </button>
+                      </div>
+
+                      {/* Menu Items */}
+                      <nav className="flex flex-col p-4 space-y-1">
+                        <Link
+                          href="/about"
+                          className="px-4 py-3 text-black hover:bg-[#4A90E2]/10 hover:text-[#4A90E2] rounded-sm transition-colors"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          About Us
+                        </Link>
+                        <a
+                          href="#services"
+                          className="px-4 py-3 text-black hover:bg-[#4A90E2]/10 hover:text-[#4A90E2] rounded-sm transition-colors"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setMobileMenuOpen(false);
+                            setTimeout(() => {
+                              document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                            }, 300);
+                          }}
+                        >
+                          Services
+                        </a>
+                        <a
+                          href="#portfolio"
+                          className="px-4 py-3 text-black hover:bg-[#4A90E2]/10 hover:text-[#4A90E2] rounded-sm transition-colors"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setMobileMenuOpen(false);
+                            setTimeout(() => {
+                              document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' });
+                            }, 300);
+                          }}
+                        >
+                          Portfolio
+                        </a>
+                        <Link
+                          href="/contact"
+                          className="px-4 py-3 bg-black text-white hover:bg-[#333] rounded-sm transition-colors mt-4 text-center"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Contact Us
+                        </Link>
+                      </nav>
+                    </div>
+                  </div>
+                </>
+              )}
             </header>
             {/* Left Hero Section */}
             <div
@@ -85,13 +212,13 @@ export default function Home() {
                 }`}
             >
               <div className="space-y-4">
-                <h1 className="text-6xl md:text-7xl font-bold text-black leading-tight">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-black leading-tight">
                   <span className="block animate-fade-in-up font-[family-name:var(--font-outfit)]">
                     Crafting Interiors
                   </span>
                   <span className="block animate-fade-in-up-delay font-[family-name:var(--font-outfit)]">
                     with{" "}
-                    <em className="font-[family-name:var(--font-great-vibes)] not-italic text-5xl md:text-6xl text-amber-600 font-normal">Elegance</em>{" "}
+                    <em className="font-[family-name:var(--font-great-vibes)] not-italic text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-amber-600 font-normal">Elegance</em>{" "}
                     and
                   </span>
                   <span className="block animate-fade-in-up-delay-2">
@@ -100,7 +227,7 @@ export default function Home() {
                 </h1>
               </div>
 
-              <p className="text-lg text-black/80 leading-relaxed max-w-lg animate-fade-in-up-delay-3">
+              <p className="text-sm sm:text-base md:text-lg text-black/80 leading-relaxed max-w-lg animate-fade-in-up-delay-3">
                 At Interor, we transform spaces with meticulous attention to
                 detail and a touch of elegance. Our expert designers create
                 bespoke interiors that perfectly reflect your style and needs.
@@ -118,7 +245,7 @@ export default function Home() {
 
           {/* Right Image Gallery */}
           <div
-            className={`relative h-[800px] overflow-hidden ${isVisible ? "animate-slide-in-right" : "opacity-0"
+            className={`relative h-[500px] sm:h-[600px] md:h-[700px] lg:h-[800px] overflow-hidden ${isVisible ? "animate-slide-in-right" : "opacity-0"
               }`}
           >
             <div className="animate-infinite-scroll-up">
@@ -126,7 +253,7 @@ export default function Home() {
               <div className="grid grid-cols-2 gap-4">
                 {/* Top Image */}
                 <div className="col-span-1">
-                  <div className="relative w-full h-64 border-2 border-white rounded-sm overflow-hidden shadow-lg hover:scale-105 transition-transform duration-500">
+                  <div className="relative w-full h-48 sm:h-56 md:h-64 border-2 border-white rounded-sm overflow-hidden shadow-lg hover:scale-105 transition-transform duration-500">
                     <Image
                       src="/ddbf2826963aff634c43547312423ea966b104bb.png"
                       alt="Interior Design"
@@ -138,7 +265,7 @@ export default function Home() {
 
                 {/* Middle Left Image */}
                 <div className="col-span-1">
-                  <div className="relative w-full h-64 border-2 border-white rounded-sm overflow-hidden shadow-lg hover:scale-105 transition-transform duration-500">
+                  <div className="relative w-full h-48 sm:h-56 md:h-64 border-2 border-white rounded-sm overflow-hidden shadow-lg hover:scale-105 transition-transform duration-500">
                     <Image
                       src="/Residence.webp"
                       alt="Residence"
@@ -150,7 +277,7 @@ export default function Home() {
 
                 {/* Middle Right Large Image */}
                 <div className="col-span-2">
-                  <div className="relative w-full h-80 border-2 border-white rounded-sm overflow-hidden shadow-lg hover:scale-105 transition-transform duration-500">
+                  <div className="relative w-full h-56 sm:h-64 md:h-72 lg:h-80 border-2 border-white rounded-sm overflow-hidden shadow-lg hover:scale-105 transition-transform duration-500">
                     <Image
                       src="/101.webp"
                       alt="Interior Design"
@@ -162,7 +289,7 @@ export default function Home() {
 
                 {/* Bottom Left Image */}
                 <div className="col-span-1">
-                  <div className="relative w-full h-48 border-2 border-white rounded-sm overflow-hidden shadow-lg hover:scale-105 transition-transform duration-500">
+                  <div className="relative w-full h-40 sm:h-44 md:h-48 border-2 border-white rounded-sm overflow-hidden shadow-lg hover:scale-105 transition-transform duration-500">
                     <Image
                       src="/optimizing.webp"
                       alt="Interior Design"
@@ -174,7 +301,7 @@ export default function Home() {
 
                 {/* Bottom Right Image */}
                 <div className="col-span-1">
-                  <div className="relative w-full h-48 border-2 border-white rounded-sm overflow-hidden shadow-lg hover:scale-105 transition-transform duration-500">
+                  <div className="relative w-full h-40 sm:h-44 md:h-48 border-2 border-white rounded-sm overflow-hidden shadow-lg hover:scale-105 transition-transform duration-500">
                     <Image
                       src="/3d.webp"
                       alt="Interior Design"
@@ -189,7 +316,7 @@ export default function Home() {
               <div className="grid grid-cols-2 gap-4 mt-4">
                 {/* Top Image */}
                 <div className="col-span-1">
-                  <div className="relative w-full h-64 border-2 border-white rounded-sm overflow-hidden shadow-lg hover:scale-105 transition-transform duration-500">
+                  <div className="relative w-full h-48 sm:h-56 md:h-64 border-2 border-white rounded-sm overflow-hidden shadow-lg hover:scale-105 transition-transform duration-500">
                     <Image
                       src="/ddbf2826963aff634c43547312423ea966b104bb.png"
                       alt="Interior Design"
@@ -201,7 +328,7 @@ export default function Home() {
 
                 {/* Middle Left Image */}
                 <div className="col-span-1">
-                  <div className="relative w-full h-64 border-2 border-white rounded-sm overflow-hidden shadow-lg hover:scale-105 transition-transform duration-500">
+                  <div className="relative w-full h-48 sm:h-56 md:h-64 border-2 border-white rounded-sm overflow-hidden shadow-lg hover:scale-105 transition-transform duration-500">
                     <Image
                       src="/Residence.webp"
                       alt="Residence"
@@ -213,7 +340,7 @@ export default function Home() {
 
                 {/* Middle Right Large Image */}
                 <div className="col-span-2">
-                  <div className="relative w-full h-80 border-2 border-white rounded-sm overflow-hidden shadow-lg hover:scale-105 transition-transform duration-500">
+                  <div className="relative w-full h-56 sm:h-64 md:h-72 lg:h-80 border-2 border-white rounded-sm overflow-hidden shadow-lg hover:scale-105 transition-transform duration-500">
                     <Image
                       src="/101.webp"
                       alt="Interior Design"
@@ -225,7 +352,7 @@ export default function Home() {
 
                 {/* Bottom Left Image */}
                 <div className="col-span-1">
-                  <div className="relative w-full h-48 border-2 border-white rounded-sm overflow-hidden shadow-lg hover:scale-105 transition-transform duration-500">
+                  <div className="relative w-full h-40 sm:h-44 md:h-48 border-2 border-white rounded-sm overflow-hidden shadow-lg hover:scale-105 transition-transform duration-500">
                     <Image
                       src="/optimizing.webp"
                       alt="Interior Design"
@@ -237,7 +364,7 @@ export default function Home() {
 
                 {/* Bottom Right Image */}
                 <div className="col-span-1">
-                  <div className="relative w-full h-48 border-2 border-white rounded-sm overflow-hidden shadow-lg hover:scale-105 transition-transform duration-500">
+                  <div className="relative w-full h-40 sm:h-44 md:h-48 border-2 border-white rounded-sm overflow-hidden shadow-lg hover:scale-105 transition-transform duration-500">
                     <Image
                       src="/3d.webp"
                       alt="Interior Design"
@@ -258,7 +385,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
             {/* Awards Title */}
             <div className="flex-shrink-0 animate-fade-in-left flex items-center gap-3">
-              <div className="relative h-32 w-auto">
+              <div className="relative h-20 sm:h-24 md:h-32 w-auto">
                 <Image
                   src="/Awards.png"
                   alt="Awards"
@@ -267,11 +394,11 @@ export default function Home() {
                   className="h-full w-auto object-contain"
                 />
               </div>
-              <div className="h-px w-8 bg-gray-600"></div>
+              <div className="h-px w-4 sm:w-6 md:w-8 bg-gray-600"></div>
             </div>
 
             {/* Awards List */}
-            <div className="flex flex-wrap gap-12 md:gap-16 lg:gap-24 flex-1 animate-fade-in-right">
+            <div className="flex flex-wrap gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-24 flex-1 animate-fade-in-right">
               {[
                 {
                   name: "German Design Award",
@@ -300,7 +427,7 @@ export default function Home() {
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   {/* Award Badge Image */}
-                  <div className="relative w-16 h-16 flex items-center justify-center flex-shrink-0">
+                  <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 flex items-center justify-center flex-shrink-0">
                     <Image
                       src={award.image}
                       alt={award.name}
@@ -311,10 +438,10 @@ export default function Home() {
                   </div>
                   {/* Award Text */}
                   <div className="text-gray-300">
-                    <div className="font-semibold text-lg leading-tight">
+                    <div className="font-semibold text-sm sm:text-base md:text-lg leading-tight">
                       {award.name}
                     </div>
-                    <div className="text-gray-500 text-sm mt-1">
+                    <div className="text-gray-500 text-xs sm:text-sm mt-1">
                       {award.year}
                     </div>
                   </div>
@@ -326,12 +453,12 @@ export default function Home() {
       </footer>
 
       {/* Services Section */}
-      <section className="w-full bg-[#F5F5F0] py-16">
+      <section id="services" className="w-full bg-[#F5F5F0] py-16">
         <div className="max-w-[95%] mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Left Column - Title and Image */}
             <div className="space-y-6 animate-fade-in-up">
-              <h2 className="text-4xl md:text-5xl font-serif text-black leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-black leading-tight">
                 Service That
                 <br />
                 We Can Provide
@@ -339,7 +466,7 @@ export default function Home() {
               <div className="relative w-full rounded-lg overflow-hidden shadow-lg transition-all duration-500">
                 {/* Furniture Selection Image */}
                 {selectedService === "furniture" && (
-                  <div className="relative w-full h-96 rounded-lg overflow-hidden shadow-lg">
+                  <div className="relative w-full h-64 sm:h-80 md:h-96 rounded-lg overflow-hidden shadow-lg">
                     <Image
                       src="/Theww.webp"
                       alt="Furniture Selection"
@@ -351,7 +478,7 @@ export default function Home() {
 
                 {/* Space Planning Image */}
                 {selectedService === "space" && (
-                  <div className="relative w-full h-96 rounded-lg overflow-hidden shadow-lg">
+                  <div className="relative w-full h-64 sm:h-80 md:h-96 rounded-lg overflow-hidden shadow-lg">
                     <Image
                       src="/Skilled-1536x658.webp"
                       alt="Space Planning"
@@ -363,7 +490,7 @@ export default function Home() {
 
                 {/* Color Consultation Image */}
                 {selectedService === "color" && (
-                  <div className="relative w-full h-96 rounded-lg overflow-hidden shadow-lg">
+                  <div className="relative w-full h-64 sm:h-80 md:h-96 rounded-lg overflow-hidden shadow-lg">
                     <Image
                       src="/project.webp"
                       alt="Color Consultation"
@@ -375,7 +502,7 @@ export default function Home() {
 
                 {/* Interior Design Image */}
                 {selectedService === "interior" && (
-                  <div className="relative w-full h-96 rounded-lg overflow-hidden shadow-lg">
+                  <div className="relative w-full h-64 sm:h-80 md:h-96 rounded-lg overflow-hidden shadow-lg">
                     <Image
                       src="/innovative-1536x658.webp"
                       alt="Interior Design"
@@ -387,7 +514,7 @@ export default function Home() {
 
                 {/* Lighting Design Image */}
                 {selectedService === "lighting" && (
-                  <div className="relative w-full h-96 rounded-lg overflow-hidden shadow-lg">
+                  <div className="relative w-full h-64 sm:h-80 md:h-96 rounded-lg overflow-hidden shadow-lg">
                     <Image
                       src="/Residence.webp"
                       alt="Lighting Design"
@@ -401,7 +528,7 @@ export default function Home() {
 
             {/* Right Column - Description and Services List */}
             <div className="space-y-8 animate-fade-in-up-delay">
-              <p className="text-black/80 text-base leading-relaxed max-w-lg">
+              <p className="text-black/80 text-sm sm:text-base leading-relaxed max-w-lg">
                 We offer bespoke furniture selection, space planning, and color
                 consultation to transform your spaces into elegant, functional
                 environments.
@@ -421,7 +548,7 @@ export default function Home() {
                       }`}
                   >
                     <h3
-                      className={`text-xl transition-all duration-300 ${selectedService === "furniture"
+                      className={`text-base sm:text-lg md:text-xl transition-all duration-300 ${selectedService === "furniture"
                         ? "font-semibold text-black"
                         : "font-medium text-black/70"
                         }`}
@@ -429,13 +556,13 @@ export default function Home() {
                       Furniture Selection
                     </h3>
                     <button
-                      className={`w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:shadow-lg transition-all duration-300 group-hover:scale-110 ${selectedService === "furniture"
+                      className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:shadow-lg transition-all duration-300 group-hover:scale-110 ${selectedService === "furniture"
                         ? "opacity-100"
                         : "opacity-0 group-hover:opacity-100"
                         }`}
                     >
                       <svg
-                        className="w-5 h-5 text-black"
+                        className="w-4 h-4 sm:w-5 sm:h-5 text-black"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -463,7 +590,7 @@ export default function Home() {
                       }`}
                   >
                     <h3
-                      className={`text-xl transition-all duration-300 ${selectedService === "space"
+                      className={`text-base sm:text-lg md:text-xl transition-all duration-300 ${selectedService === "space"
                         ? "font-semibold text-black"
                         : "font-medium text-black/70"
                         }`}
@@ -471,13 +598,13 @@ export default function Home() {
                       Space Planning
                     </h3>
                     <button
-                      className={`w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:shadow-lg transition-all duration-300 group-hover:scale-110 ${selectedService === "space"
+                      className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:shadow-lg transition-all duration-300 group-hover:scale-110 ${selectedService === "space"
                         ? "opacity-100"
                         : "opacity-0 group-hover:opacity-100"
                         }`}
                     >
                       <svg
-                        className="w-5 h-5 text-black"
+                        className="w-4 h-4 sm:w-5 sm:h-5 text-black"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -505,7 +632,7 @@ export default function Home() {
                       }`}
                   >
                     <h3
-                      className={`text-xl transition-all duration-300 ${selectedService === "color"
+                      className={`text-base sm:text-lg md:text-xl transition-all duration-300 ${selectedService === "color"
                         ? "font-semibold text-black"
                         : "font-medium text-black/70"
                         }`}
@@ -513,13 +640,13 @@ export default function Home() {
                       Color Consultation
                     </h3>
                     <button
-                      className={`w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:shadow-lg transition-all duration-300 group-hover:scale-110 ${selectedService === "color"
+                      className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:shadow-lg transition-all duration-300 group-hover:scale-110 ${selectedService === "color"
                         ? "opacity-100"
                         : "opacity-0 group-hover:opacity-100"
                         }`}
                     >
                       <svg
-                        className="w-5 h-5 text-black"
+                        className="w-4 h-4 sm:w-5 sm:h-5 text-black"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -547,7 +674,7 @@ export default function Home() {
                       }`}
                   >
                     <h3
-                      className={`text-xl transition-all duration-300 ${selectedService === "interior"
+                      className={`text-base sm:text-lg md:text-xl transition-all duration-300 ${selectedService === "interior"
                         ? "font-semibold text-black"
                         : "font-medium text-black/70"
                         }`}
@@ -555,13 +682,13 @@ export default function Home() {
                       Interior Design
                     </h3>
                     <button
-                      className={`w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:shadow-lg transition-all duration-300 group-hover:scale-110 ${selectedService === "interior"
+                      className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:shadow-lg transition-all duration-300 group-hover:scale-110 ${selectedService === "interior"
                         ? "opacity-100"
                         : "opacity-0 group-hover:opacity-100"
                         }`}
                     >
                       <svg
-                        className="w-5 h-5 text-black"
+                        className="w-4 h-4 sm:w-5 sm:h-5 text-black"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -589,7 +716,7 @@ export default function Home() {
                       }`}
                   >
                     <h3
-                      className={`text-xl transition-all duration-300 ${selectedService === "lighting"
+                      className={`text-base sm:text-lg md:text-xl transition-all duration-300 ${selectedService === "lighting"
                         ? "font-semibold text-black"
                         : "font-medium text-black/70"
                         }`}
@@ -597,13 +724,13 @@ export default function Home() {
                       Lighting Design
                     </h3>
                     <button
-                      className={`w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:shadow-lg transition-all duration-300 group-hover:scale-110 ${selectedService === "lighting"
+                      className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:shadow-lg transition-all duration-300 group-hover:scale-110 ${selectedService === "lighting"
                         ? "opacity-100"
                         : "opacity-0 group-hover:opacity-100"
                         }`}
                     >
                       <svg
-                        className="w-5 h-5 text-black"
+                        className="w-4 h-4 sm:w-5 sm:h-5 text-black"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -638,7 +765,7 @@ export default function Home() {
                 OUR SERVICES
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-5xl font-serif text-black leading-tight max-w-4xl">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-black leading-tight max-w-4xl">
               We provide the{" "}
               <em className="italic font-normal">best solutions</em>
               <br />
@@ -649,7 +776,7 @@ export default function Home() {
           {/* Service Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {/* Architectural & Interior Design Card */}
-            <div className="bg-[#F9F9F4] rounded-lg p-8 shadow-md hover:shadow-xl transition-all duration-500 animate-fade-in-scale group h-full min-h-[320px] flex flex-col">
+            <div className="bg-[#F9F9F4] rounded-lg p-6 sm:p-8 shadow-md hover:shadow-xl transition-all duration-500 animate-fade-in-scale group h-full min-h-[280px] sm:min-h-[320px] flex flex-col">
               <div className="mb-8 flex justify-start">
                 <div className="w-16 h-16 text-[#8B6914] animate-fade-in-scale-delay">
                   <svg
@@ -773,7 +900,7 @@ export default function Home() {
                   </svg>
                 </div>
               </div>
-              <h3 className="text-2xl font-serif text-black mb-4 group-hover:text-[#8B6914] transition-colors duration-300">
+              <h3 className="text-xl sm:text-2xl font-serif text-black mb-4 group-hover:text-[#8B6914] transition-colors duration-300">
                 Architectural & Interior design
               </h3>
               <p className="text-black/70 text-sm leading-relaxed">
@@ -783,7 +910,7 @@ export default function Home() {
             </div>
 
             {/* Building Renovation Card */}
-            <div className="bg-[#F9F9F4] rounded-lg p-8 shadow-md hover:shadow-xl transition-all duration-500 animate-fade-in-scale-delay group h-full min-h-[320px] flex flex-col">
+            <div className="bg-[#F9F9F4] rounded-lg p-6 sm:p-8 shadow-md hover:shadow-xl transition-all duration-500 animate-fade-in-scale-delay group h-full min-h-[280px] sm:min-h-[320px] flex flex-col">
               <div className="mb-8 flex justify-start">
                 <div className="w-16 h-16 text-[#8B6914] animate-fade-in-scale-delay-2">
                   <svg
@@ -874,7 +1001,7 @@ export default function Home() {
             </div>
 
             {/* Construction Management Card */}
-            <div className="bg-[#F9F9F4] rounded-lg p-8 shadow-md hover:shadow-xl transition-all duration-500 animate-fade-in-scale-delay-2 group h-full min-h-[320px] flex flex-col">
+            <div className="bg-[#F9F9F4] rounded-lg p-6 sm:p-8 shadow-md hover:shadow-xl transition-all duration-500 animate-fade-in-scale-delay-2 group h-full min-h-[280px] sm:min-h-[320px] flex flex-col">
               <div className="mb-8 flex justify-start">
                 <div className="w-16 h-16 text-[#8B6914] animate-fade-in-scale-delay-3">
                   <svg
@@ -944,7 +1071,7 @@ export default function Home() {
             </div>
 
             {/* Project Consultation Card */}
-            <div className="bg-[#F9F9F4] rounded-lg p-8 shadow-md hover:shadow-xl transition-all duration-500 animate-fade-in-scale-delay-3 group h-full min-h-[320px] flex flex-col">
+            <div className="bg-[#F9F9F4] rounded-lg p-6 sm:p-8 shadow-md hover:shadow-xl transition-all duration-500 animate-fade-in-scale-delay-3 group h-full min-h-[280px] sm:min-h-[320px] flex flex-col">
               <div className="mb-8 flex justify-start">
                 <div className="w-16 h-16 text-[#8B6914] animate-fade-in-scale-delay-4">
                   <svg
@@ -1043,7 +1170,7 @@ export default function Home() {
                   </svg>
                 </div>
               </div>
-              <h3 className="text-2xl font-serif text-black mb-4 group-hover:text-[#8B6914] transition-colors duration-300">
+              <h3 className="text-xl sm:text-2xl font-serif text-black mb-4 group-hover:text-[#8B6914] transition-colors duration-300">
                 Project Consultation
               </h3>
               <p className="text-black/70 text-sm leading-relaxed">
@@ -1055,16 +1182,16 @@ export default function Home() {
         </div>
       </section>
       {/* How We Design Section */}
-      <section className="w-full bg-[#F5F5F0] py-20">
+      <section className="w-full bg-[#F5F5F0] py-12 md:py-16 lg:py-20">
         <div className="max-w-[95%] mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Left – Steps */}
-            <div className="space-y-10">
+            <div className="space-y-8 md:space-y-10">
               <div>
                 <p className="text-xs uppercase tracking-widest text-black/50 mb-2">
                   Step 01
                 </p>
-                <h3 className="text-2xl font-serif text-black mb-3">
+                <h3 className="text-xl sm:text-2xl font-serif text-black mb-3">
                   Planning
                 </h3>
                 <p className="text-black/70 text-sm leading-relaxed max-w-md">
@@ -1078,7 +1205,7 @@ export default function Home() {
                 <p className="text-xs uppercase tracking-widest text-black/50 mb-2">
                   Step 02
                 </p>
-                <h3 className="text-2xl font-serif text-black mb-3">
+                <h3 className="text-xl sm:text-2xl font-serif text-black mb-3">
                   Estimating
                 </h3>
                 <p className="text-black/70 text-sm leading-relaxed max-w-md">
@@ -1091,7 +1218,7 @@ export default function Home() {
                 <p className="text-xs uppercase tracking-widest text-black/50 mb-2">
                   Step 03
                 </p>
-                <h3 className="text-2xl font-serif text-black mb-3">
+                <h3 className="text-xl sm:text-2xl font-serif text-black mb-3">
                   Building
                 </h3>
                 <p className="text-black/70 text-sm leading-relaxed max-w-md">
@@ -1103,13 +1230,13 @@ export default function Home() {
 
             {/* Right – Title + Image */}
             <div className="space-y-6">
-              <h2 className="text-4xl md:text-5xl font-serif text-black leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-black leading-tight">
                 HOW WE DESIGN
                 <br />
                 YOUR INTERIOR
               </h2>
 
-              <div className="relative w-[60%] h-[400px] rounded-md overflow-hidden shadow-lg z-10 -mb-24">
+              <div className="relative w-full sm:w-[80%] md:w-[70%] lg:w-[60%] h-[300px] sm:h-[350px] md:h-[400px] rounded-md overflow-hidden shadow-lg z-10 lg:-mb-24">
                 <Image
                   src="/Image-Section.png" // replace with your image
                   alt="Interior Design"
@@ -1123,12 +1250,12 @@ export default function Home() {
       </section>
 
       {/* Featured Projects */}
-      <section className="w-full bg-[#0E0E0E] py-20">
+      <section id="portfolio" className="w-full bg-[#0E0E0E] py-12 md:py-16 lg:py-20">
         <div className="max-w-[95%] mx-auto px-4 md:px-6">
           {/* Title */}
-          <div className="flex items-end justify-between mb-10">
+          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-8 md:mb-10 gap-4">
             <div>
-              <h2 className="text-3xl md:text-4xl font-serif text-white mb-3">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-white mb-2 sm:mb-3">
                 OUR FEATURED PROJECTS
               </h2>
               <p className="text-white/60 text-sm max-w-md">
@@ -1136,26 +1263,26 @@ export default function Home() {
                 commitment to excellence in interior design.
               </p>
             </div>
-            <span className="text-white/50 text-sm">01 / 09</span>
+            <span className="text-white/50 text-xs sm:text-sm">01 / 09</span>
           </div>
 
           {/* Cards */}
           {/* Featured Projects – Infinite Horizontal Scroll */}
           <div className="relative overflow-hidden">
-            <div className="flex gap-6 animate-scroll-horizontal w-max">
+            <div className="flex gap-4 sm:gap-6 animate-scroll-horizontal w-max">
               {[...Array(2)].map((_, loopIndex) => (
-                <div key={loopIndex} className="flex gap-6">
+                <div key={loopIndex} className="flex gap-4 sm:gap-6">
                   {/* Card 1 */}
-                  <div className="group relative min-w-[320px] overflow-hidden rounded-lg">
+                  <div className="group relative min-w-[280px] sm:min-w-[320px] overflow-hidden rounded-lg">
                     <Image
                       src="/ddbf2826963aff634c43547312423ea966b104bb.png"
                       alt="Office Room DEXA Corp"
                       width={600}
                       height={400}
-                      className="w-full h-[260px] object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-[220px] sm:h-[260px] object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                      <h3 className="text-white font-medium">
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 sm:p-6">
+                      <h3 className="text-white font-medium text-sm sm:text-base">
                         Office Room DEXA Corp
                       </h3>
                       <p className="text-white/60 text-xs mt-1">
@@ -1165,16 +1292,16 @@ export default function Home() {
                   </div>
 
                   {/* Card 2 */}
-                  <div className="group relative min-w-[320px] overflow-hidden rounded-lg">
+                  <div className="group relative min-w-[280px] sm:min-w-[320px] overflow-hidden rounded-lg">
                     <Image
                       src="/7a730a4fee2a889bdd408cac0b6e45808edbf3c3.png"
                       alt="Omoisori Kohi"
                       width={600}
                       height={400}
-                      className="w-full h-[260px] object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-[220px] sm:h-[260px] object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                      <h3 className="text-white font-medium">Omoisori Kohi</h3>
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 sm:p-6">
+                      <h3 className="text-white font-medium text-sm sm:text-base">Omoisori Kohi</h3>
                       <p className="text-white/60 text-xs mt-1">
                         Space Planning · North Jakarta
                       </p>
@@ -1182,16 +1309,16 @@ export default function Home() {
                   </div>
 
                   {/* Card 3 */}
-                  <div className="group relative min-w-[320px] overflow-hidden rounded-lg">
+                  <div className="group relative min-w-[280px] sm:min-w-[320px] overflow-hidden rounded-lg">
                     <Image
                       src="/b5ad278e6d317fa77c460e7201dbb863cf70f692.png"
                       alt="Modern Kitchen"
                       width={600}
                       height={400}
-                      className="w-full h-[260px] object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-[220px] sm:h-[260px] object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                      <h3 className="text-white font-medium">Modern Kitchen</h3>
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 sm:p-6">
+                      <h3 className="text-white font-medium text-sm sm:text-base">Modern Kitchen</h3>
                       <p className="text-white/60 text-xs mt-1">
                         Interior Design · Jakarta
                       </p>
@@ -1199,16 +1326,16 @@ export default function Home() {
                   </div>
 
                   {/* Card 4 */}
-                  <div className="group relative min-w-[320px] overflow-hidden rounded-lg">
+                  <div className="group relative min-w-[280px] sm:min-w-[320px] overflow-hidden rounded-lg">
                     <Image
                       src="/c74e6ec219396fe45062052aa8afd0c22f00395c.png"
                       alt="Luxury Living Room"
                       width={600}
                       height={400}
-                      className="w-full h-[260px] object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-[220px] sm:h-[260px] object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                      <h3 className="text-white font-medium">
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 sm:p-6">
+                      <h3 className="text-white font-medium text-sm sm:text-base">
                         Luxury Living Room
                       </h3>
                       <p className="text-white/60 text-xs mt-1">
@@ -1218,16 +1345,16 @@ export default function Home() {
                   </div>
 
                   {/* Card 5 */}
-                  <div className="group relative min-w-[320px] overflow-hidden rounded-lg">
+                  <div className="group relative min-w-[280px] sm:min-w-[320px] overflow-hidden rounded-lg">
                     <Image
                       src="/d5d8d162934a0ffec9b688a25d5be658ba66b28a.png"
                       alt="Minimal Workspace"
                       width={600}
                       height={400}
-                      className="w-full h-[260px] object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-[220px] sm:h-[260px] object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                      <h3 className="text-white font-medium">
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 sm:p-6">
+                      <h3 className="text-white font-medium text-sm sm:text-base">
                         Minimal Workspace
                       </h3>
                       <p className="text-white/60 text-xs mt-1">
@@ -1237,16 +1364,16 @@ export default function Home() {
                   </div>
 
                   {/* Card 6 */}
-                  <div className="group relative min-w-[320px] overflow-hidden rounded-lg">
+                  <div className="group relative min-w-[280px] sm:min-w-[320px] overflow-hidden rounded-lg">
                     <Image
                       src="/b5ad278e6d317fa77c460e7201dbb863cf70f692.png"
                       alt="Cafe Interior"
                       width={600}
                       height={400}
-                      className="w-full h-[260px] object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-[220px] sm:h-[260px] object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                      <h3 className="text-white font-medium">Cafe Interior</h3>
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 sm:p-6">
+                      <h3 className="text-white font-medium text-sm sm:text-base">Cafe Interior</h3>
                       <p className="text-white/60 text-xs mt-1">
                         Space Planning · Bandung
                       </p>

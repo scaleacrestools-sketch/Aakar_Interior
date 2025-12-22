@@ -86,16 +86,16 @@ export default function TestimonialSection() {
   };
 
   return (
-    <section className="bg-[#F5F5F0] py-20 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4">
+    <section className="bg-[#F5F5F0] py-12 sm:py-16 md:py-20 overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center"
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >
           {/* Image */}
-          <div className="relative max-w-[520px]">
-            <div className="relative h-[420px] rounded-md overflow-hidden shadow-lg">
+          <div className="relative max-w-[520px] mx-auto lg:mx-0 w-full">
+            <div className="relative h-[280px] sm:h-[350px] md:h-[420px] rounded-md overflow-hidden shadow-lg">
               <Image
                 key={testimonials[current].image}
                 src={testimonials[current].image}
@@ -106,12 +106,12 @@ export default function TestimonialSection() {
             </div>
 
             {/* Dots */}
-            <div className="flex justify-center gap-2 mt-4">
+            <div className="flex justify-center gap-1.5 sm:gap-2 mt-3 sm:mt-4">
               {testimonials.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setCurrent(i)}
-                  className={`w-2.5 h-2.5 rounded-full transition ${current === i ? "bg-black" : "bg-black/30"
+                  className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition ${current === i ? "bg-black" : "bg-black/30"
                     }`}
                 />
               ))}
@@ -119,8 +119,8 @@ export default function TestimonialSection() {
           </div>
 
           {/* Content */}
-          <div className="max-w-xl space-y-8 -mt-30">
-            <h2 className="text-4xl md:text-5xl font-serif leading-tight">
+          <div className="max-w-xl space-y-6 sm:space-y-8">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif leading-tight">
               WHAT PEOPLE SAY
               <br />
               ABOUT US
@@ -128,40 +128,40 @@ export default function TestimonialSection() {
 
             <p
               key={testimonials[current].text}
-              className="text-black/70 text-base mt-20 leading-relaxed animate-fadeSlide mt-6"
+              className="text-black/70 text-sm sm:text-base leading-relaxed animate-fadeSlide"
             >
-              “{testimonials[current].text}”
+              "{testimonials[current].text}"
             </p>
 
             {/* Author */}
-            <div className="flex items-center justify-between pt-6 border-t border-black/20">
-              <div className="flex items-center gap-4">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pt-4 sm:pt-6 border-t border-black/20 gap-4">
+              <div className="flex items-center gap-3 sm:gap-4">
                 <Image
                   src={testimonials[current].avatar}
                   alt={testimonials[current].name}
                   width={44}
                   height={44}
-                  className="rounded-full object-cover"
+                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-full object-cover"
                 />
                 <div>
-                  <p className="font-medium">{testimonials[current].name}</p>
-                  <p className="text-sm text-black/60">
+                  <p className="font-medium text-sm sm:text-base">{testimonials[current].name}</p>
+                  <p className="text-xs sm:text-sm text-black/60">
                     {testimonials[current].role}
                   </p>
                 </div>
               </div>
 
               {/* Arrows */}
-              <div className="flex gap-3">
+              <div className="flex gap-2 sm:gap-3">
                 <button
                   onClick={prev}
-                  className="w-10 h-10 rounded-full border border-black/30 flex items-center justify-center hover:bg-black hover:text-white transition"
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-black/30 flex items-center justify-center hover:bg-black hover:text-white transition text-sm sm:text-base"
                 >
                   ←
                 </button>
                 <button
                   onClick={next}
-                  className="w-10 h-10 rounded-full border border-black/30 flex items-center justify-center hover:bg-black hover:text-white transition"
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-black/30 flex items-center justify-center hover:bg-black hover:text-white transition text-sm sm:text-base"
                 >
                   →
                 </button>
