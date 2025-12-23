@@ -34,49 +34,6 @@ export default function ContactPage() {
         });
     };
 
-    const contactInfo = [
-        {
-            icon: (
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-            ),
-            title: "Visit Us",
-            details: ["123 Design Street", "New Delhi, India"],
-            color: "from-[#8B6914] to-[#A67C00]",
-        },
-        {
-            icon: (
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-            ),
-            title: "Call Us",
-            details: ["+91 92660 23436"],
-            color: "from-[#4A90E2] to-[#357ABD]",
-        },
-        {
-            icon: (
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-            ),
-            title: "Email Us",
-            details: ["info@aakarinteriors.com"],
-            color: "from-[#8B6914] to-[#4A90E2]",
-        },
-        {
-            icon: (
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-            ),
-            title: "Working Hours",
-            details: ["Mon - Fri: 9AM - 6PM", "Sat: 10AM - 4PM"],
-            color: "from-[#4A90E2] to-[#8B6914]",
-        },
-    ];
 
     return (
         <div className="min-h-screen bg-[#F5F5F0]">
@@ -125,37 +82,6 @@ export default function ContactPage() {
                 <div className="absolute bottom-10 right-5 sm:right-10 w-20 h-20 sm:w-32 sm:h-32 bg-[#4A90E2]/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
             </section>
 
-            {/* Contact Info Cards */}
-            <section className="w-full py-8 sm:py-12 md:py-16 -mt-8 relative z-10">
-                <div className="max-w-7xl mx-auto px-4 md:px-6">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                        {contactInfo.map((info, index) => (
-                            <div
-                                key={index}
-                                className="group relative bg-white p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 overflow-hidden border border-black/5"
-                                style={{ animationDelay: `${index * 100}ms` }}
-                            >
-                                {/* Gradient Background on Hover */}
-                                <div className={`absolute inset-0 bg-gradient-to-br ${info.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-
-                                <div className="relative z-10">
-                                    <div className="text-[#8B6914] group-hover:text-white mb-4 group-hover:scale-110 transition-all duration-300">
-                                        {info.icon}
-                                    </div>
-                                    <h3 className="text-lg sm:text-xl font-bold text-black group-hover:text-white mb-3 transition-colors duration-300">
-                                        {info.title}
-                                    </h3>
-                                    {info.details.map((detail, idx) => (
-                                        <p key={idx} className="text-xs sm:text-sm text-black/70 group-hover:text-white/90 transition-colors duration-300 leading-relaxed">
-                                            {detail}
-                                        </p>
-                                    ))}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
 
             {/* Main Contact Section */}
             <section className="w-full py-6 sm:py-8 md:py-10 lg:py-12">
