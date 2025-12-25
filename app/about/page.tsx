@@ -46,11 +46,10 @@ export default function AboutPage() {
 
     return (
         <div className="min-h-screen bg-[#F5F5F0]">
-            {/* Header */}
             <Header />
 
             {/* Hero Section */}
-            <section className="relative w-full py-12 sm:py-14 md:py-16 lg:py-20 overflow-hidden">
+            <section className="relative w-full py-16 md:py-20 lg:py-24 overflow-hidden">
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0">
                     <Image
@@ -61,54 +60,63 @@ export default function AboutPage() {
                         priority
                     />
                     {/* Overlay for text readability */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/70"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/75 to-black/85"></div>
                 </div>
 
-                <div className="max-w-[95%] mx-auto px-4 md:px-6 relative z-10">
-                    <div className={`text-center space-y-4 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}>
+                {/* Decorative Elements */}
+                <div className="absolute top-20 left-10 w-24 h-24 bg-[#8B6914]/20 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-20 right-10 w-32 h-32 bg-[#8B6914]/15 rounded-full blur-3xl"></div>
+
+                <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
+                    <div className={`text-center space-y-6 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
                         <div className="inline-block">
-                            <span className="text-sm md:text-base uppercase tracking-widest text-[#F4D03F] font-medium bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+                            <span className="text-sm md:text-base uppercase tracking-[0.3em] text-[#8B6914] font-semibold bg-white/10 backdrop-blur-md px-6 py-3 rounded-sm border border-[#8B6914]/30">
                                 Since 1986
                             </span>
                         </div>
-                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight drop-shadow-2xl">
-                            <span className="block">Redefining Spaces</span>
-                            <span className="block mt-2">
+                        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-tight">
+                            <span className="block mb-3">Redefining Spaces</span>
+                            <span className="block">
                                 for Over{" "}
-                                <span className="text-[#F4D03F] italic font-[family-name:var(--font-great-vibes)]">
+                                <span className="text-amber-600 italic font-[family-name:var(--font-great-vibes)]">
                                     Three Decades
                                 </span>
                             </span>
                         </h1>
-                        <p className="text-base sm:text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed drop-shadow-lg">
+                        <p className="text-base md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
                             At Aakar Interiors, we've been redefining the way spaces are designed and experienced.
                             Our company thrives on creativity, innovation, and an unwavering commitment to quality.
                         </p>
                     </div>
                 </div>
-
-                {/* Decorative Elements */}
-                <div className="absolute top-20 left-10 w-20 h-20 bg-[#F4D03F]/20 rounded-full blur-3xl animate-pulse"></div>
-                <div className="absolute bottom-20 right-10 w-32 h-32 bg-[#4A90E2]/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
             </section>
 
             {/* Timeline Section */}
-            <section className="w-full py-8 sm:py-10 md:py-12 bg-white">
+            <section className="w-full py-12 md:py-16 bg-white">
                 <div className="max-w-6xl mx-auto px-4 md:px-6">
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-black mb-8 sm:mb-10 text-center">
-                        Our Journey
-                    </h2>
+                    <div className="text-center mb-12">
+                        <div className="flex items-center justify-center gap-3 mb-4">
+                            <div className="h-px w-12 bg-[#8B6914]"></div>
+                            <span className="text-xs md:text-sm uppercase tracking-wider text-black/70 font-medium">
+                                Our Journey
+                            </span>
+                            <div className="h-px w-12 bg-[#8B6914]"></div>
+                        </div>
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-black">
+                            Our Journey
+                        </h2>
+                    </div>
 
                     <div className="relative">
                         {/* Timeline Line */}
-                        <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-[#8B6914] to-[#4A90E2] hidden md:block"></div>
+                        <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-[#8B6914]/30 hidden md:block"></div>
 
                         {/* Milestones */}
-                        <div className="space-y-6 md:space-y-8">
+                        <div className="space-y-8 md:space-y-12">
                             {milestones.map((milestone, index) => (
                                 <div
                                     key={index}
-                                    className={`relative flex flex-col md:flex-row items-center gap-4 md:gap-8 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                                    className={`relative flex flex-col md:flex-row items-center gap-6 md:gap-8 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                                         }`}
                                     onMouseEnter={() => setActiveYear(index)}
                                 >
@@ -118,23 +126,23 @@ export default function AboutPage() {
                                             } text-center md:text-left`}
                                     >
                                         <div
-                                            className={`bg-[#F5F5F0] p-4 sm:p-5 rounded-lg shadow-md hover:shadow-xl transition-all duration-500 transform hover:scale-105 ${activeYear === index ? "ring-2 ring-[#8B6914]" : ""
+                                            className={`bg-[#F5F5F0] p-6 rounded-sm shadow-md hover:shadow-lg transition-all duration-300 ${activeYear === index ? "ring-2 ring-[#8B6914]" : ""
                                                 }`}
                                         >
-                                            <h3 className="text-2xl sm:text-3xl font-bold text-[#8B6914] mb-2">
+                                            <h3 className="text-3xl font-bold text-[#8B6914] mb-2">
                                                 {milestone.year}
                                             </h3>
-                                            <h4 className="text-lg sm:text-xl font-semibold text-black mb-2">
+                                            <h4 className="text-xl font-semibold text-black mb-2">
                                                 {milestone.title}
                                             </h4>
-                                            <p className="text-sm sm:text-base text-black/70">
+                                            <p className="text-base text-black/70">
                                                 {milestone.description}
                                             </p>
                                         </div>
                                     </div>
 
                                     {/* Center Dot */}
-                                    <div className="hidden md:flex w-4 h-4 bg-[#8B6914] rounded-full border-4 border-white shadow-lg z-10"></div>
+                                    <div className="hidden md:flex w-4 h-4 bg-[#8B6914] rounded-full border-4 border-white shadow-md z-10"></div>
 
                                     {/* Spacer */}
                                     <div className="flex-1 hidden md:block"></div>
@@ -146,33 +154,40 @@ export default function AboutPage() {
             </section>
 
             {/* Advantages Section */}
-            <section className="w-full py-8 sm:py-10 md:py-12 bg-[#F5F5F0]">
+            <section className="w-full py-12 md:py-16 bg-[#F5F5F0]">
                 <div className="max-w-7xl mx-auto px-4 md:px-6">
-                    <div className="text-center mb-8 sm:mb-10">
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-black mb-3">
+                    <div className="text-center mb-12">
+                        <div className="flex items-center justify-center gap-3 mb-4">
+                            <div className="h-px w-12 bg-[#8B6914]"></div>
+                            <span className="text-xs md:text-sm uppercase tracking-wider text-black/70 font-medium">
+                                Our Advantages
+                            </span>
+                            <div className="h-px w-12 bg-[#8B6914]"></div>
+                        </div>
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-black mb-4">
                             The Advantages of{" "}
                             <span className="text-[#8B6914]">Aakar Interiors</span>
                         </h2>
-                        <p className="text-base sm:text-lg text-black/70 max-w-3xl mx-auto">
+                        <p className="text-base md:text-lg text-black/70 max-w-3xl mx-auto">
                             We bring together the latest trends, materials, and design techniques to transform
                             spaces into something exceptional.
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         {advantages.map((advantage, index) => (
                             <div
                                 key={index}
-                                className="group bg-white p-5 sm:p-6 rounded-lg shadow-md hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
+                                className="group bg-white p-6 rounded-sm shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                                 style={{ animationDelay: `${index * 100}ms` }}
                             >
-                                <div className="text-5xl sm:text-6xl mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
+                                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
                                     {advantage.icon}
                                 </div>
-                                <h3 className="text-xl sm:text-2xl font-semibold text-black mb-2 sm:mb-3">
+                                <h3 className="text-xl font-semibold text-black mb-3">
                                     {advantage.title}
                                 </h3>
-                                <p className="text-sm sm:text-base text-black/70 leading-relaxed">
+                                <p className="text-sm text-black/70 leading-relaxed">
                                     {advantage.description}
                                 </p>
                             </div>
@@ -182,24 +197,30 @@ export default function AboutPage() {
             </section>
 
             {/* Vision Section */}
-            <section className="w-full py-8 sm:py-10 md:py-12 bg-gradient-to-br from-[#1C1C1C] to-[#2C2C2C] text-white">
+            <section className="w-full py-12 md:py-16 bg-white">
                 <div className="max-w-6xl mx-auto px-4 md:px-6">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-center">
-                        <div className="space-y-4">
-                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif leading-tight">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+                        <div className="space-y-6">
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="h-px w-12 bg-[#8B6914]"></div>
+                                <span className="text-xs md:text-sm uppercase tracking-wider text-black/70 font-medium">
+                                    Our Vision & Mission
+                                </span>
+                            </div>
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-black leading-tight">
                                 Our Vision & Mission
                             </h2>
-                            <div className="space-y-3">
-                                <div className="border-l-4 border-[#8B6914] pl-4 sm:pl-6">
-                                    <h3 className="text-xl sm:text-2xl font-semibold mb-2">Vision</h3>
-                                    <p className="text-sm sm:text-base text-white/80">
+                            <div className="space-y-6">
+                                <div className="border-l-4 border-[#8B6914] pl-6">
+                                    <h3 className="text-xl sm:text-2xl font-semibold text-black mb-2">Vision</h3>
+                                    <p className="text-base text-black/70">
                                         To be the most trusted and innovative interior design company, setting new
                                         standards of excellence in creating spaces that inspire and transform lives.
                                     </p>
                                 </div>
-                                <div className="border-l-4 border-[#4A90E2] pl-4 sm:pl-6">
-                                    <h3 className="text-xl sm:text-2xl font-semibold mb-2">Mission</h3>
-                                    <p className="text-sm sm:text-base text-white/80">
+                                <div className="border-l-4 border-black pl-6">
+                                    <h3 className="text-xl sm:text-2xl font-semibold text-black mb-2">Mission</h3>
+                                    <p className="text-base text-black/70">
                                         To deliver exceptional interior design solutions that blend creativity,
                                         functionality, and sustainability, while exceeding client expectations through
                                         our expertise and dedication.
@@ -208,7 +229,7 @@ export default function AboutPage() {
                             </div>
                         </div>
 
-                        <div className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-lg overflow-hidden shadow-2xl">
+                        <div className="relative h-[400px] md:h-[500px] rounded-sm overflow-hidden shadow-lg">
                             <Image
                                 src="/7a730a4fee2a889bdd408cac0b6e45808edbf3c3.png"
                                 alt="Our Vision"
@@ -221,9 +242,9 @@ export default function AboutPage() {
             </section>
 
             {/* Stats Section */}
-            <section className="w-full py-8 sm:py-10 md:py-12 bg-white">
+            <section className="w-full py-12 md:py-16 bg-[#F5F5F0]">
                 <div className="max-w-6xl mx-auto px-4 md:px-6">
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
                         {[
                             { number: "38+", label: "Years of Excellence" },
                             { number: "1000+", label: "Projects Completed" },
@@ -232,12 +253,12 @@ export default function AboutPage() {
                         ].map((stat, index) => (
                             <div
                                 key={index}
-                                className="text-center p-4 sm:p-5 bg-[#F5F5F0] rounded-lg hover:bg-[#8B6914] hover:text-white transition-all duration-300 group"
+                                className="text-center p-6 bg-white rounded-sm shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group"
                             >
-                                <div className="text-3xl sm:text-4xl md:text-5xl font-bold mb-1.5 group-hover:scale-110 transition-transform">
+                                <div className="text-4xl md:text-5xl font-bold text-[#8B6914] mb-2 group-hover:scale-110 transition-transform">
                                     {stat.number}
                                 </div>
-                                <div className="text-xs sm:text-sm md:text-base font-medium opacity-80">
+                                <div className="text-sm md:text-base font-medium text-black/70">
                                     {stat.label}
                                 </div>
                             </div>
@@ -247,17 +268,17 @@ export default function AboutPage() {
             </section>
 
             {/* CTA Section */}
-            <section className="w-full py-8 sm:py-10 md:py-12 bg-[#F5F5F0]">
+            <section className="w-full py-12 md:py-16 bg-white">
                 <div className="max-w-4xl mx-auto px-4 md:px-6 text-center">
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-black mb-4">
                         Ready to Transform Your Space?
                     </h2>
-                    <p className="text-base sm:text-lg text-black/70 mb-6">
+                    <p className="text-base md:text-lg text-black/70 mb-8">
                         Let's create something exceptional together. Contact us today to start your journey.
                     </p>
                     <Link
-                        href="/"
-                        className="inline-flex items-center gap-3 bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-sm hover:bg-[#8B6914] transition-all duration-300 text-sm sm:text-base group"
+                        href="/contact"
+                        className="inline-flex items-center gap-2 bg-black text-white px-8 py-4 rounded-sm hover:bg-[#333] transition-all duration-300 group"
                     >
                         <span>Get Started</span>
                         <svg
