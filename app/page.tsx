@@ -213,10 +213,10 @@ export default function Home() {
             >
               <div className="space-y-4">
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-black leading-tight">
-                  <span className="block animate-fade-in-up font-[family-name:var(--font-outfit)]">
+                  <span className="block animate-fade-in-up font-[family-name:var(--font-inter)]">
                     Crafting Interiors
                   </span>
-                  <span className="block animate-fade-in-up-delay font-[family-name:var(--font-outfit)]">
+                  <span className="block animate-fade-in-up-delay font-[family-name:var(--font-inter)]">
                     with{" "}
                     <em className="font-[family-name:var(--font-great-vibes)] not-italic text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-amber-600 font-normal">Elegance</em>{" "}
                     and
