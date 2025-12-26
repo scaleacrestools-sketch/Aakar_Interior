@@ -257,7 +257,7 @@ export default function AboutPage() {
                     </p>
                     <Link
                         href="/"
-                        className="inline-flex items-center gap-3 bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-sm hover:bg-[#8B6914] transition-all duration-300 text-sm sm:text-base group"
+                        className="inline-flex items-center gap-3 btn-brand-gradient text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base group shadow-md"
                     >
                         <span>Get Started</span>
                         <svg

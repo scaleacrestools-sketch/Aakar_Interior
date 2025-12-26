@@ -11,9 +11,18 @@ export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
   const [selectedService, setSelectedService] = useState("furniture");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -22,35 +31,35 @@ export default function Home() {
       {/* <div className="h-1 bg-[#4A90E2] w-full"></div> */}
 
       {/* Main Content */}
-      <main className="max-w-[95%] mx-auto px-4 md:px-6 pt-4 pb-12">
+      <main className="max-w-[95%] mx-auto px-4 md:px-6 pt-[88px] md:pt-[104px] pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-2 items-start">
           {/* Left Section - Header and Hero */}
           <div className="space-y-8">
             {/* Header */}
-            <header className="w-full pt-2 pb-6 bg-[#F5F5F0]">
-              <nav className="flex items-center justify-between">
+            <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-[95%] md:max-w-[90%] lg:max-w-[85%] px-4">
+              <nav className={`w-full backdrop-blur-xl bg-white/80 border border-white/20 rounded-full px-4 md:px-5 lg:px-7 py-2 flex items-center justify-between shadow-lg shadow-black/5 transition-all duration-300 ${isScrolled ? 'bg-white/90 shadow-xl shadow-black/10' : ''}`}>
                 {/* Logo */}
-                <div className="flex items-center gap-3 animate-fade-in">
+                <div className="flex items-center gap-2.5 animate-fade-in flex-shrink-0">
                   <Image
                     src="/AAKAR-BLACK-scaled.png"
                     alt="AAKAR Interior"
-                    width={150}
-                    height={39}
-                    className="h-8 md:h-10 lg:h-12 w-auto object-contain"
+                    width={100}
+                    height={33}
+                    className="h-6 md:h-7 lg:h-8 w-auto object-contain"
                   />
                 </div>
 
                 {/* Navigation */}
-                <div className="hidden md:flex items-center gap-8 animate-fade-in-delay">
+                <div className="hidden md:flex items-center gap-5 lg:gap-7 animate-fade-in-delay">
                   <Link
                     href="/about"
-                    className="text-black hover:text-[#4A90E2] transition-colors duration-300"
+                    className="text-black/90 hover:text-[#4A90E2] transition-colors duration-300 text-sm font-medium"
                   >
                     About Us
                   </Link>
                   <a
                     href="#services"
-                    className="text-black hover:text-[#4A90E2] transition-colors duration-300"
+                    className="text-black/90 hover:text-[#4A90E2] transition-colors duration-300 text-sm font-medium"
                     onClick={(e) => {
                       e.preventDefault();
                       document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
@@ -60,7 +69,7 @@ export default function Home() {
                   </a>
                   <a
                     href="#portfolio"
-                    className="text-black hover:text-[#4A90E2] transition-colors duration-300"
+                    className="text-black/90 hover:text-[#4A90E2] transition-colors duration-300 text-sm font-medium"
                     onClick={(e) => {
                       e.preventDefault();
                       document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' });
@@ -72,12 +81,12 @@ export default function Home() {
 
                 {/* Mobile Menu Button */}
                 <button
-                  className="md:hidden flex items-center justify-center w-10 h-10 rounded-sm hover:bg-black/5 transition-colors"
+                  className="md:hidden flex items-center justify-center w-9 h-9 rounded-full hover:bg-black/5 transition-colors"
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                   aria-label="Toggle menu"
                 >
                   <svg
-                    className="w-6 h-6 text-black"
+                    className="w-5 h-5 text-black"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -103,12 +112,12 @@ export default function Home() {
                 {/* Contact Button */}
                 <Link
                   href="/contact"
-                  className="hidden md:flex bg-black text-white px-3 py-2 md:px-6 md:py-3 rounded-sm items-center gap-1 md:gap-2 hover:bg-[#333] transition-all duration-300 animate-fade-in-delay-2 group text-sm md:text-base"
+                  className="hidden md:flex btn-brand-gradient text-white px-4 py-2 md:px-5 md:py-2.5 rounded-full items-center gap-1.5 md:gap-2 animate-fade-in-delay-2 group text-sm font-medium shadow-md"
                 >
                   <span className="hidden sm:inline">Contact Us</span>
                   <span className="sm:hidden">Contact</span>
                   <svg
-                    className="w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform duration-300"
+                    className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover:scale-110 transition-transform duration-300"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -133,7 +142,7 @@ export default function Home() {
                   ></div>
 
                   {/* Menu Panel */}
-                  <div className="fixed top-0 right-0 h-full w-64 bg-white shadow-2xl z-50 md:hidden animate-slide-in-right">
+                  <div className="fixed top-0 right-0 h-full w-64 backdrop-blur-xl bg-white/95 border-l border-white/20 shadow-2xl z-50 md:hidden animate-slide-in-right">
                     <div className="flex flex-col h-full">
                       {/* Menu Header */}
                       <div className="flex items-center justify-between p-4 border-b border-black/10">
@@ -195,7 +204,7 @@ export default function Home() {
                         </a>
                         <Link
                           href="/contact"
-                          className="px-4 py-3 bg-black text-white hover:bg-[#333] rounded-sm transition-colors mt-4 text-center"
+                          className="px-4 py-3 btn-brand-gradient text-white rounded-full transition-colors mt-4 text-center"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           Contact Us

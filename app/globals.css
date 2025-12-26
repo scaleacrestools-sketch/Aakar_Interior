@@ -3,6 +3,12 @@
 :root {
   --background: #F5F5F0;
   --foreground: #000000;
+  
+  /* Brand Colors */
+  --brand-color-1: #C38E70;
+  --brand-color-2: #B07D62;
+  --brand-color-3: #CD9777;
+  --brand-color-4: #8A5A44;
 }
 
 @theme inline {
@@ -242,4 +248,16 @@ html {
 
 .animate-scroll-horizontal {
   animation: scroll-horizontal 35s linear infinite;
+}
+
+/* Brand Gradient Button */
+.btn-brand-gradient {
+  background: linear-gradient(135deg, #CD9777 0%, #C38E70 25%, #B07D62 50%, #8A5A44 100%);
+  transition: all 0.3s ease;
+}
+
+.btn-brand-gradient:hover {
+  background: linear-gradient(135deg, #8A5A44 0%, #B07D62 25%, #C38E70 50%, #CD9777 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(138, 90, 68, 0.3);
 }
