@@ -5,17 +5,14 @@ import Image from "next/image";
 import Link from "next/link";
 import TestimonialSection from "./components/TestimonialSection";
 import Footer from "./components/Footer";
+import BannerHero from "./components/BannerHero";
 
 
 export default function Home() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible] = useState(true);
   const [selectedService, setSelectedService] = useState("furniture");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,16 +24,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#F5F5F0] overflow-x-hidden">
-      {/* Top Blue Strip */}
-      {/* <div className="h-1 bg-[#4A90E2] w-full"></div> */}
-
-      {/* Main Content */}
-      <main className="max-w-[95%] mx-auto px-4 md:px-6 pt-[88px] md:pt-[104px] pb-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-2 items-start">
-          {/* Left Section - Header and Hero */}
-          <div className="space-y-8">
-            {/* Header */}
-            <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-[95%] md:max-w-[90%] lg:max-w-[85%] px-4">
+      {/* Header - Fixed at top */}
+      <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-[95%] md:max-w-[90%] lg:max-w-[85%] px-4">
               <nav className={`w-full backdrop-blur-xl bg-white/80 border border-white/20 rounded-full px-4 md:px-5 lg:px-7 py-2 flex items-center justify-between shadow-lg shadow-black/5 transition-all duration-300 ${isScrolled ? 'bg-white/90 shadow-xl shadow-black/10' : ''}`}>
                 {/* Logo */}
                 <div className="flex items-center gap-2.5 animate-fade-in flex-shrink-0">
@@ -112,7 +101,7 @@ export default function Home() {
                 {/* Contact Button */}
                 <Link
                   href="/contact"
-                  className="hidden md:flex btn-brand-gradient text-white px-4 py-2 md:px-5 md:py-2.5 rounded-full items-center gap-1.5 md:gap-2 animate-fade-in-delay-2 group text-sm font-medium shadow-md"
+                  className="hidden md:flex btn-brand-gradient text-white px-4 py-2 md:px-5 md:py-2.5 rounded-lg items-center gap-1.5 md:gap-2 animate-fade-in-delay-2 group text-sm font-medium"
                 >
                   <span className="hidden sm:inline">Contact Us</span>
                   <span className="sm:hidden">Contact</span>
@@ -204,7 +193,7 @@ export default function Home() {
                         </a>
                         <Link
                           href="/contact"
-                          className="px-4 py-3 btn-brand-gradient text-white rounded-full transition-colors mt-4 text-center"
+                          className="px-4 py-3 btn-brand-gradient text-white rounded-lg transition-colors mt-4 text-center"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           Contact Us
@@ -214,7 +203,28 @@ export default function Home() {
                   </div>
                 </>
               )}
-            </header>
+      </header>
+
+      {/* Banner Hero Section */}
+      <BannerHero
+        imageSrc="/web-1-scaled.webp"
+        imageAlt="Interior Design"
+        headline={{
+          line1: "Bringing Simplicity",
+          line2: "In The Furnishing Market",
+        }}
+        description="Aakar simplifies the complex process of furnishing all-inclusive, boutique & high-end hotels, and luxury residences with elegance and precision."
+        ctaButton={{
+          href: "/contact",
+          text: "Start Your Furnishing Journey",
+        }}
+      />
+
+      {/* Main Content - Original Hero Section (Now Section 2) */}
+      <main className="max-w-[95%] mx-auto px-4 md:px-6 py-12 md:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-2 items-start">
+          {/* Left Section - Hero Content */}
+          <div className="space-y-8">
             {/* Left Hero Section */}
             <div
               className={`space-y-8 ${isVisible ? "animate-slide-in-left" : "opacity-0"

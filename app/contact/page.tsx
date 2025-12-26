@@ -231,7 +231,7 @@ export default function ContactPage() {
                                 {/* Submit Button */}
                                 <button
                                     type="submit"
-                                    className="w-full btn-brand-gradient text-white py-3.5 rounded-full font-semibold flex items-center justify-center gap-2 group text-base shadow-md"
+                                    className="w-full btn-brand-gradient text-white py-3.5 rounded-lg font-semibold flex items-center justify-center gap-2 group text-base"
                                 >
                                     <span>Send Message</span>
                                     <svg

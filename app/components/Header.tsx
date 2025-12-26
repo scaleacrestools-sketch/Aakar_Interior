@@ -54,7 +54,7 @@ export default function Header() {
 
                 {/* Mobile Menu Button */}
                 <button
-                    className="md:hidden flex items-center justify-center w-9 h-9 rounded-full hover:bg-black/5 transition-colors"
+                    className="md:hidden flex items-center justify-center w-9 h-9 rounded-lg hover:bg-black/5 transition-colors"
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     aria-label="Toggle menu"
                 >
@@ -85,12 +85,12 @@ export default function Header() {
                 {/* Contact Button */}
                 <Link
                     href="/contact"
-                    className="hidden md:flex btn-brand-gradient text-white px-4 py-2 md:px-5 md:py-2.5 rounded-full items-center gap-1.5 md:gap-2 animate-fade-in-delay-2 group text-sm font-medium shadow-md"
+                    className="hidden md:flex btn-brand-gradient text-white px-3 py-1.5 md:px-4 md:py-2 rounded-lg items-center gap-1 md:gap-1.5 animate-fade-in-delay-2 group text-xs md:text-sm font-medium"
                 >
                     <span className="hidden sm:inline">Contact Us</span>
                     <span className="sm:hidden">Contact</span>
                     <svg
-                        className="w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform duration-300"
+                        className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover:scale-110 transition-transform duration-300"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -122,7 +122,7 @@ export default function Header() {
                                 <span className="font-semibold text-black">Menu</span>
                                 <button
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className="w-8 h-8 flex items-center justify-center rounded-sm hover:bg-black/5 transition-colors"
+                                    className="w-8 h-8 flex items-center justify-center rounded hover:bg-black/5 transition-colors"
                                 >
                                     <svg
                                         className="w-5 h-5 text-black"
@@ -165,7 +165,7 @@ export default function Header() {
                                 </Link>
                                 <Link
                                     href="/contact"
-                                    className="px-4 py-3 btn-brand-gradient text-white rounded-full transition-colors mt-4 text-center"
+                                    className="px-4 py-3 btn-brand-gradient text-white rounded-lg transition-colors mt-4 text-center"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     Contact Us
