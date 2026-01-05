@@ -277,6 +277,8 @@ export default function AboutPage() {
                         Let's create something exceptional together. Contact us today to start your journey.
                     </p>
                     <Link
+                        href="/"
+                        className="inline-flex items-center gap-3 btn-brand-gradient text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-sm sm:text-base group"
                         href="/contact"
                         className="inline-flex items-center gap-2 bg-black text-white px-8 py-4 rounded-sm hover:bg-[#333] transition-all duration-300 group"
                     >

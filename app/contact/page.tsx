@@ -336,6 +336,27 @@ export default function ContactPage() {
                                         className="w-full bg-black text-white py-4 rounded-sm font-semibold hover:bg-[#333] transition-all duration-300 flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
 
+                                {/* Submit Button */}
+                                <button
+                                    type="submit"
+                                    className="w-full btn-brand-gradient text-white py-3.5 rounded-lg font-semibold flex items-center justify-center gap-2 group text-base"
+                                >
+                                    <span>Send Message</span>
+                                    <svg
+                                        className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M13 7l5 5m0 0l-5 5m5-5H6"
+                                        />
+                                    </svg>
+                                </button>
+                            </form>
                                         <span>
                                             {isSubmitting ? "Sending..." : "Send Message"}
                                         </span>

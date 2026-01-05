@@ -1,43 +1,52 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 20);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     return (
-        <header className="w-full pt-2 pb-6 bg-[#F5F5F0]">
-            <nav className="max-w-[95%] mx-auto px-4 md:px-6 flex items-center justify-between">
+        <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-[85%] md:max-w-[80%] lg:max-w-[85%] px-4">
+            <nav className={`w-full backdrop-blur-xl bg-white/80 border border-white/20 rounded-full px-4 md:px-5 lg:px-7 py-2 flex items-center justify-between shadow-lg shadow-black/5 transition-all duration-300 ${isScrolled ? 'bg-white/90 shadow-xl shadow-black/10' : ''}`}>
                 {/* Logo */}
-                <Link href="/" className="flex items-center gap-3 animate-fade-in">
+                <Link href="/" className="flex items-center gap-2.5 animate-fade-in flex-shrink-0">
                     <Image
                         src="/AAKAR-BLACK-scaled.png"
                         alt="AAKAR Interior"
-                        width={150}
-                        height={39}
-                        className="h-8 md:h-10 lg:h-12 w-auto object-contain"
+                        width={120}
+                        height={35}
+                        className="h-9 w-auto object-contain"
                     />
                 </Link>
 
                 {/* Navigation */}
-                <div className="hidden md:flex items-center gap-8 animate-fade-in-delay">
+                <div className="hidden md:flex items-center gap-5 lg:gap-7 animate-fade-in-delay">
                     <Link
                         href="/about"
-                        className="text-black hover:text-[#4A90E2] transition-colors duration-300"
+                        className="text-black/90 hover:text-[#4A90E2] transition-colors duration-300 text-sm font-medium"
                     >
                         About Us
                     </Link>
                     <Link
                         href="/#services"
-                        className="text-black hover:text-[#4A90E2] transition-colors duration-300"
+                        className="text-black/90 hover:text-[#4A90E2] transition-colors duration-300 text-sm font-medium"
                     >
                         Services
                     </Link>
                     <Link
                         href="/#portfolio"
-                        className="text-black hover:text-[#4A90E2] transition-colors duration-300"
+                        className="text-black/90 hover:text-[#4A90E2] transition-colors duration-300 text-sm font-medium"
                     >
                         Portfolio
                     </Link>
@@ -45,12 +54,12 @@ export default function Header() {
 
                 {/* Mobile Menu Button */}
                 <button
-                    className="md:hidden flex items-center justify-center w-10 h-10 rounded-sm hover:bg-black/5 transition-colors"
+                    className="md:hidden flex items-center justify-center w-9 h-9 rounded-lg hover:bg-black/5 transition-colors"
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     aria-label="Toggle menu"
                 >
                     <svg
-                        className="w-6 h-6 text-black"
+                        className="w-5 h-5 text-black"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -76,12 +85,12 @@ export default function Header() {
                 {/* Contact Button */}
                 <Link
                     href="/contact"
-                    className="hidden md:flex bg-black text-white px-3 py-2 md:px-6 md:py-3 rounded-sm items-center gap-1 md:gap-2 hover:bg-[#333] transition-all duration-300 animate-fade-in-delay-2 group text-sm md:text-base"
+                    className="hidden md:flex btn-brand-gradient text-white px-3 py-1.5 md:px-4 md:py-2 rounded-lg items-center gap-1 md:gap-1.5 animate-fade-in-delay-2 group text-xs md:text-sm font-medium"
                 >
                     <span className="hidden sm:inline">Contact Us</span>
                     <span className="sm:hidden">Contact</span>
                     <svg
-                        className="w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform duration-300"
+                        className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover:scale-110 transition-transform duration-300"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -105,15 +114,15 @@ export default function Header() {
                         onClick={() => setMobileMenuOpen(false)}
                     ></div>
 
-                    {/* Menu Panel */}
-                    <div className="fixed top-0 right-0 h-full w-64 bg-white shadow-2xl z-50 md:hidden animate-slide-in-right">
+                  {/* Menu Panel */}
+                  <div className="fixed top-0 right-0 h-full w-64 backdrop-blur-xl bg-white/95 border-l border-white/20 shadow-2xl z-50 md:hidden animate-slide-in-right">
                         <div className="flex flex-col h-full">
                             {/* Menu Header */}
                             <div className="flex items-center justify-between p-4 border-b border-black/10">
                                 <span className="font-semibold text-black">Menu</span>
                                 <button
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className="w-8 h-8 flex items-center justify-center rounded-sm hover:bg-black/5 transition-colors"
+                                    className="w-8 h-8 flex items-center justify-center rounded hover:bg-black/5 transition-colors"
                                 >
                                     <svg
                                         className="w-5 h-5 text-black"
@@ -156,7 +165,7 @@ export default function Header() {
                                 </Link>
                                 <Link
                                     href="/contact"
-                                    className="px-4 py-3 bg-black text-white hover:bg-[#333] rounded-sm transition-colors mt-4 text-center"
+                                    className="px-4 py-3 btn-brand-gradient text-white rounded-lg transition-colors mt-4 text-center"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     Contact Us
