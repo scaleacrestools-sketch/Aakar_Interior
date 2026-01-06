@@ -2,7 +2,11 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Header from "../components/Header";
+import { Inter } from "next/font/google";
+import { Award, Sparkles, Target, Lightbulb, Zap } from "lucide-react";
+import Header from "@/components/web-section/layout/header";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export default function ContactPage() {
     const [isVisible, setIsVisible] = useState(false);
@@ -92,8 +96,16 @@ export default function ContactPage() {
         }
     ];
 
+    const whyChooseUsItems = [
+        { text: "38+ Years of Design Excellence", Icon: Award },
+        { text: "1000+ Successful Projects", Icon: Sparkles },
+        { text: "Award-Winning Design Team", Icon: Target },
+        { text: "Personalized Design Solutions", Icon: Lightbulb },
+        { text: "On-Time Project Delivery", Icon: Zap },
+    ];
+
     return (
-        <div className="min-h-screen bg-[#F5F5F0]">
+        <div className={`min-h-screen bg-[#F5F5F0] ${inter.className}`}>
             <Header />
 
             {/* Hero Section */}
@@ -117,16 +129,16 @@ export default function ContactPage() {
                 <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
                     <div className={`text-center space-y-6 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
                         <div className="inline-block">
-                            <span className="text-sm md:text-base uppercase tracking-[0.3em] text-[#8B6914] font-semibold bg-white/10 backdrop-blur-md px-6 py-3 rounded-sm border border-[#8B6914]/30">
+                            <span className="text-sm md:text-base uppercase text-[#8B6914] font-semibold bg-white/10 backdrop-blur-md px-6 py-3 rounded-sm border border-[#8B6914]/30">
                                 Get In Touch
                             </span>
                         </div>
 
-                        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-tight">
+                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
                             <span className="block mb-3">Let's Create</span>
                             <span className="block">
                                 Your{" "}
-                                <span className="text-amber-600 italic font-[family-name:var(--font-great-vibes)]">
+                                <span className="text-amber-600 italic">
                                     Dream Space
                                 </span>
                             </span>
@@ -182,7 +194,7 @@ export default function ContactPage() {
             </section>
 
             {/* Main Contact Section */}
-            <section className="py-16 md:py-20">
+            <section className="py-2 md:py-6">
                 <div className="max-w-7xl mx-auto px-4 md:px-6">
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
                         {/* Contact Form */}
@@ -200,7 +212,7 @@ export default function ContactPage() {
                                     </p>
                                 </div>
 
-                                <form onSubmit={handleSubmit} className="space-y-6">
+                                     <form onSubmit={handleSubmit} className="space-y-6">
                                     {/* Name & Email */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div className="relative group">
@@ -260,12 +272,13 @@ export default function ContactPage() {
                                                     : "top-4 text-sm text-black/60"
                                                     }`}
                                             >
-                                                Phone Number
+                                                Phone Number *
                                             </label>
                                             <input
                                                 type="tel"
                                                 id="phone"
                                                 name="phone"
+                                                required
                                                 value={formData.phone}
                                                 onChange={handleChange}
                                                 onFocus={() => setFocusedField("phone")}
@@ -291,7 +304,7 @@ export default function ContactPage() {
                                                 onChange={handleChange}
                                                 onFocus={() => setFocusedField("service")}
                                                 onBlur={() => setFocusedField("")}
-                                                className="w-full px-4 py-3 border border-black/20 rounded-sm focus:border-[#8B6914] focus:outline-none transition-all duration-300 appearance-none bg-white cursor-pointer"
+                                                className="w-full px-4 py-3 pr-10 border border-black/20 rounded-sm focus:border-[#8B6914] focus:outline-none transition-all duration-300 appearance-none bg-white cursor-pointer"
                                             >
                                                 <option value=""></option>
                                                 <option value="furniture">Furniture Selection</option>
@@ -302,6 +315,12 @@ export default function ContactPage() {
                                                 <option value="renovation">Building Renovation</option>
                                                 <option value="consultation">Project Consultation</option>
                                             </select>
+                                            {/* Dropdown Icon */}
+                                            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                                                <svg className="w-4 h-4 text-black/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                                </svg>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -335,28 +354,6 @@ export default function ContactPage() {
                                         disabled={isSubmitting}
                                         className="w-full bg-black text-white py-4 rounded-sm font-semibold hover:bg-[#333] transition-all duration-300 flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
-
-                                {/* Submit Button */}
-                                <button
-                                    type="submit"
-                                    className="w-full btn-brand-gradient text-white py-3.5 rounded-lg font-semibold flex items-center justify-center gap-2 group text-base"
-                                >
-                                    <span>Send Message</span>
-                                    <svg
-                                        className="w-5 h-5 group-hover:translate-x-1 transition-transform"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth={2}
-                                            d="M13 7l5 5m0 0l-5 5m5-5H6"
-                                        />
-                                    </svg>
-                                </button>
-                            </form>
                                         <span>
                                             {isSubmitting ? "Sending..." : "Send Message"}
                                         </span>
@@ -392,25 +389,22 @@ export default function ContactPage() {
                                     </div>
 
                                     <ul className="space-y-4">
-                                        {[
-                                            { text: "38+ Years of Design Excellence", icon: "🏆" },
-                                            { text: "1000+ Successful Projects", icon: "✨" },
-                                            { text: "Award-Winning Design Team", icon: "🎯" },
-                                            { text: "Personalized Design Solutions", icon: "💡" },
-                                            { text: "On-Time Project Delivery", icon: "⚡" },
-                                        ].map((item, index) => (
-                                            <li
-                                                key={index}
-                                                className="flex items-start gap-4 group/item cursor-default transform transition-all duration-300 hover:translate-x-2"
-                                            >
-                                                <span className="text-xl flex-shrink-0 group-hover/item:scale-110 transition-transform duration-300">
-                                                    {item.icon}
-                                                </span>
-                                                <span className="text-sm text-black/80 group-hover/item:text-black transition-colors leading-relaxed">
-                                                    {item.text}
-                                                </span>
-                                            </li>
-                                        ))}
+                                        {whyChooseUsItems.map((item, index) => {
+                                            const IconComponent = item.Icon;
+                                            return (
+                                                <li
+                                                    key={index}
+                                                    className="flex items-start gap-4 group/item cursor-default transform transition-all duration-300 hover:translate-x-2"
+                                                >
+                                                    <div className="flex-shrink-0 group-hover/item:scale-110 transition-transform duration-300">
+                                                        <IconComponent className="w-5 h-5 text-[#8B6914]" />
+                                                    </div>
+                                                    <span className="text-sm text-black/80 group-hover/item:text-black transition-colors leading-relaxed">
+                                                        {item.text}
+                                                    </span>
+                                                </li>
+                                            );
+                                        })}
                                     </ul>
                                 </div>
                             </div>
@@ -468,8 +462,6 @@ export default function ContactPage() {
                     </div>
                 </div>
             </section>
-
-
         </div>
     );
 }

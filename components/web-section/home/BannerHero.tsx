@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import CTAButton from "./CTAButton";
+import CTAButton from "../common-components/CTAButton";
 
 interface BannerHeroProps {
   imageSrc: string;
@@ -45,7 +45,7 @@ export default function BannerHero({
 
         {/* Content */}
         <div className="relative z-10 h-full flex flex-col justify-end pb-8 md:pb-12 lg:pb-12 px-6 md:px-8 lg:px-12">
-          <div className="max-w-7xl mx-auto w-full">
+          <div className="max-w-8xl mx-auto w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 items-end">
               {/* Left Side - Main Headline */}
               <motion.div
@@ -62,7 +62,7 @@ export default function BannerHero({
                 className="space-y-4"
               >
                 <motion.h1
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-medium text-white leading-tight drop-shadow-2xl"
+                  className="text-3xl sm:text-4xl md:text-5xl font-bold font-medium text-white leading-tight drop-shadow-2xl"
                   variants={{
                     hidden: { opacity: 0, y: 30 },
                     visible: {
@@ -126,7 +126,7 @@ export default function BannerHero({
                 className="space-y-2"
               >
                 <motion.p
-                  className="text-base sm:text-sm md:text-sm text-white/90 leading-relaxed max-w-lg drop-shadow-lg"
+                  className="text-base sm:text-lg md:text-sm text-white/90 leading-relaxed max-w-lg drop-shadow-lg"
                   variants={{
                     hidden: { opacity: 0, y: 20 },
                     visible: {
@@ -154,4 +154,3 @@ export default function BannerHero({
     </section>
   );
 }
-

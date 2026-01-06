@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Great_Vibes } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/web-section/layout/header";
+import Footer from "@/components/web-section/common-components/Footer";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -29,7 +31,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${greatVibes.variable} antialiased`}
       >
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

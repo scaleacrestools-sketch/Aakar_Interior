@@ -3,6 +3,9 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export default function PrivacyPolicyPage() {
     const [isVisible, setIsVisible] = useState(false);
@@ -12,7 +15,7 @@ export default function PrivacyPolicyPage() {
     }, []);
 
     return (
-        <div className="min-h-screen bg-[#F5F5F0]">
+        <div className={`min-h-screen bg-[#F5F5F0] ${inter.className}`}>
             {/* Header */}
             <header className="w-full bg-white border-b border-black/10 sticky top-0 z-50">
                 <div className="max-w-[95%] mx-auto px-4 md:px-6 py-4">
@@ -64,7 +67,7 @@ export default function PrivacyPolicyPage() {
                                 At Aakar Interiors, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, and safeguard your data.
                             </p>
 
-                            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-black mt-8 mb-4">1. Information We Collect</h2>
+                            <h2 className="text-xl sm:text-2xl md:text-xl font-bold text-black mt-8 mb-4">1. Information We Collect</h2>
                             <p className="text-sm sm:text-base text-black/80 leading-relaxed mb-3">We collect information that you provide directly to us, including:</p>
                             <ul className="list-disc pl-6 space-y-2 text-sm sm:text-base text-black/70 mb-6">
                                 <li>Personal information (name, email address, phone number, mailing address)</li>
@@ -74,7 +77,7 @@ export default function PrivacyPolicyPage() {
                                 <li>Information collected automatically through cookies and similar technologies</li>
                             </ul>
 
-                            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-black mt-8 mb-4">2. How We Use Your Information</h2>
+                            <h2 className="text-xl sm:text-2xl md:text-xl font-bold text-black mt-8 mb-4">2. How We Use Your Information</h2>
                             <p className="text-sm sm:text-base text-black/80 leading-relaxed mb-3">We use the information we collect to:</p>
                             <ul className="list-disc pl-6 space-y-2 text-sm sm:text-base text-black/70 mb-6">
                                 <li>Provide, maintain, and improve our interior design services</li>
@@ -86,7 +89,7 @@ export default function PrivacyPolicyPage() {
                                 <li>Personalize and improve your experience</li>
                             </ul>
 
-                            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-black mt-8 mb-4">3. Information Sharing and Disclosure</h2>
+                            <h2 className="text-xl sm:text-2xl md:text-xl font-bold text-black mt-8 mb-4">3. Information Sharing and Disclosure</h2>
                             <p className="text-sm sm:text-base text-black/80 leading-relaxed mb-3">We may share your information in the following circumstances:</p>
                             <ul className="list-disc pl-6 space-y-2 text-sm sm:text-base text-black/70 mb-3">
                                 <li>With vendors, consultants, and service providers who need access to perform services for us</li>
@@ -97,7 +100,7 @@ export default function PrivacyPolicyPage() {
                             </ul>
                             <p className="text-sm sm:text-base text-black/80 leading-relaxed mb-6">We do not sell your personal information to third parties.</p>
 
-                            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-black mt-8 mb-4">4. Data Security</h2>
+                            <h2 className="text-xl sm:text-2xl md:text-xl font-bold text-black mt-8 mb-4">4. Data Security</h2>
                             <p className="text-sm sm:text-base text-black/80 leading-relaxed mb-3">We take reasonable measures to protect your information from unauthorized access, use, or disclosure. We implement industry-standard security measures including:</p>
                             <ul className="list-disc pl-6 space-y-2 text-sm sm:text-base text-black/70 mb-6">
                                 <li>Encryption of sensitive data</li>
@@ -107,7 +110,7 @@ export default function PrivacyPolicyPage() {
                                 <li>Employee training on data protection</li>
                             </ul>
 
-                            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-black mt-8 mb-4">5. Your Rights and Choices</h2>
+                            <h2 className="text-xl sm:text-2xl md:text-xl font-bold text-black mt-8 mb-4">5. Your Rights and Choices</h2>
                             <p className="text-sm sm:text-base text-black/80 leading-relaxed mb-3">You have the right to:</p>
                             <ul className="list-disc pl-6 space-y-2 text-sm sm:text-base text-black/70 mb-3">
                                 <li>Access, update, or delete your personal information</li>
@@ -119,19 +122,19 @@ export default function PrivacyPolicyPage() {
                             </ul>
                             <p className="text-sm sm:text-base text-black/80 leading-relaxed mb-6">To exercise these rights, please contact us at hello@aakar.com</p>
 
-                            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-black mt-8 mb-4">6. Cookies and Tracking Technologies</h2>
+                            <h2 className="text-xl sm:text-2xl md:text-xl font-bold text-black mt-8 mb-4">6. Cookies and Tracking Technologies</h2>
                             <p className="text-sm sm:text-base text-black/80 leading-relaxed mb-3">We use cookies and similar tracking technologies to remember your preferences, understand how you use our website, improve our services, and provide personalized content. You can control cookies through your browser settings.</p>
 
-                            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-black mt-8 mb-4">7. Children's Privacy</h2>
+                            <h2 className="text-xl sm:text-2xl md:text-xl font-bold text-black mt-8 mb-4">7. Children's Privacy</h2>
                             <p className="text-sm sm:text-base text-black/80 leading-relaxed mb-6">Our services are not directed to children under 13 years of age. We do not knowingly collect personal information from children under 13. If you believe we have collected information from a child under 13, please contact us immediately.</p>
 
-                            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-black mt-8 mb-4">8. Changes to This Privacy Policy</h2>
+                            <h2 className="text-xl sm:text-2xl md:text-xl font-bold text-black mt-8 mb-4">8. Changes to This Privacy Policy</h2>
                             <p className="text-sm sm:text-base text-black/80 leading-relaxed mb-6">We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date. Your continued use of our services after changes constitutes acceptance of the updated policy.</p>
 
-                            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-black mt-8 mb-4">9. International Data Transfers</h2>
+                            <h2 className="text-xl sm:text-2xl md:text-xl font-bold text-black mt-8 mb-4">9. International Data Transfers</h2>
                             <p className="text-sm sm:text-base text-black/80 leading-relaxed mb-6">Your information may be transferred to and processed in countries other than your country of residence. We ensure appropriate safeguards are in place to protect your information in accordance with this Privacy Policy.</p>
 
-                            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-black mt-8 mb-4">10. Contact Us</h2>
+                            <h2 className="text-xl sm:text-2xl md:text-xl font-bold text-black mt-8 mb-4">10. Contact Us</h2>
                             <p className="text-sm sm:text-base text-black/80 leading-relaxed mb-3">If you have any questions about this Privacy Policy, please contact us:</p>
                             <ul className="list-disc pl-6 space-y-2 text-sm sm:text-base text-black/70 mb-6">
                                 <li>Email: hello@aakar.com</li>

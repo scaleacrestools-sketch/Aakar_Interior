@@ -3,6 +3,9 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export default function TermsPage() {
     const [isVisible, setIsVisible] = useState(false);
@@ -12,7 +15,7 @@ export default function TermsPage() {
     }, []);
 
     return (
-        <div className="min-h-screen bg-[#F5F5F0]">
+        <div className={`min-h-screen bg-[#F5F5F0] ${inter.className}`}>
             {/* Header */}
             <header className="w-full bg-white border-b border-black/10 sticky top-0 z-50">
                 <div className="max-w-[95%] mx-auto px-4 md:px-6 py-4">
@@ -64,10 +67,10 @@ export default function TermsPage() {
                                 Please read these terms and conditions carefully before using our services. These terms govern your use of Aakar Interiors' website and services.
                             </p>
 
-                            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-black mt-8 mb-4">1. Acceptance of Terms</h2>
+                            <h2 className="text-xl sm:text-2xl font-bold text-black mt-8 mb-4">1. Acceptance of Terms</h2>
                             <p className="text-sm sm:text-base text-black/80 leading-relaxed mb-6">By accessing and using the Aakar Interiors website and services, you accept and agree to be bound by these Terms and Conditions. We reserve the right to update or modify these terms at any time without prior notice. Your continued use of our services constitutes acceptance of any changes.</p>
 
-                            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-black mt-8 mb-4">2. Services Description</h2>
+                            <h2 className="text-xl sm:text-2xl font-bold text-black mt-8 mb-4">2. Services Description</h2>
                             <p className="text-sm sm:text-base text-black/80 leading-relaxed mb-3">Aakar Interiors provides professional interior design services, including but not limited to:</p>
                             <ul className="list-disc pl-6 space-y-2 text-sm sm:text-base text-black/70 mb-6">
                                 <li>Residential and commercial interior design</li>
@@ -79,7 +82,7 @@ export default function TermsPage() {
                                 <li>Custom furniture design and fabrication</li>
                             </ul>
 
-                            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-black mt-8 mb-4">3. Client Responsibilities</h2>
+                            <h2 className="text-xl sm:text-2xl font-bold text-black mt-8 mb-4">3. Client Responsibilities</h2>
                             <p className="text-sm sm:text-base text-black/80 leading-relaxed mb-3">As a client, you agree to:</p>
                             <ul className="list-disc pl-6 space-y-2 text-sm sm:text-base text-black/70 mb-6">
                                 <li>Provide accurate and complete information about your project</li>
@@ -91,7 +94,7 @@ export default function TermsPage() {
                                 <li>Respect intellectual property rights of our designs</li>
                             </ul>
 
-                            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-black mt-8 mb-4">4. Fees and Payment</h2>
+                            <h2 className="text-xl sm:text-2xl font-bold text-black mt-8 mb-4">4. Fees and Payment</h2>
                             <ul className="list-disc pl-6 space-y-2 text-sm sm:text-base text-black/70 mb-6">
                                 <li>All fees are quoted in the local currency unless otherwise specified</li>
                                 <li>A deposit is required to commence work on any project</li>
@@ -101,11 +104,11 @@ export default function TermsPage() {
                                 <li>Additional charges may apply for changes to approved designs</li>
                             </ul>
 
-                            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-black mt-8 mb-4">5. Intellectual Property Rights</h2>
+                            <h2 className="text-xl sm:text-2xl font-bold text-black mt-8 mb-4">5. Intellectual Property Rights</h2>
                             <p className="text-sm sm:text-base text-black/80 leading-relaxed mb-3">All designs, drawings, specifications, and other materials created by Aakar Interiors remain our intellectual property until full payment is received. Upon full payment, you receive a license to use the designs for the specific project only.</p>
                             <p className="text-sm sm:text-base text-black/80 leading-relaxed mb-6">We retain the right to use project photos and designs for marketing purposes unless otherwise agreed in writing.</p>
 
-                            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-black mt-8 mb-4">6. Project Timeline and Delays</h2>
+                            <h2 className="text-xl sm:text-2xl font-bold text-black mt-8 mb-4">6. Project Timeline and Delays</h2>
                             <p className="text-sm sm:text-base text-black/80 leading-relaxed mb-3">We strive to complete all projects within the agreed timeline. However:</p>
                             <ul className="list-disc pl-6 space-y-2 text-sm sm:text-base text-black/70 mb-6">
                                 <li>Timelines are estimates and may be subject to change</li>
@@ -115,11 +118,11 @@ export default function TermsPage() {
                                 <li>We will communicate any anticipated delays promptly</li>
                             </ul>
 
-                            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-black mt-8 mb-4">7. Warranties and Disclaimers</h2>
+                            <h2 className="text-xl sm:text-2xl font-bold text-black mt-8 mb-4">7. Warranties and Disclaimers</h2>
                             <p className="text-sm sm:text-base text-black/80 leading-relaxed mb-3">We warrant that our services will be performed with professional skill and care. However, we disclaim warranties regarding third-party products, contractor workmanship, and structural integrity of existing buildings.</p>
                             <p className="text-sm sm:text-base text-black/80 leading-relaxed mb-6">Our liability is limited to the fees paid for our services. We are not liable for indirect, consequential, or incidental damages.</p>
 
-                            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-black mt-8 mb-4">8. Cancellation and Termination</h2>
+                            <h2 className="text-xl sm:text-2xl font-bold text-black mt-8 mb-4">8. Cancellation and Termination</h2>
                             <p className="text-sm sm:text-base text-black/80 leading-relaxed mb-3">Either party may terminate the agreement with written notice:</p>
                             <ul className="list-disc pl-6 space-y-2 text-sm sm:text-base text-black/70 mb-6">
                                 <li>Client cancellations: Fees for work completed plus cancellation fee may apply</li>
@@ -129,7 +132,7 @@ export default function TermsPage() {
                                 <li>Deposits are generally non-refundable</li>
                             </ul>
 
-                            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-black mt-8 mb-4">9. Limitation of Liability</h2>
+                            <h2 className="text-xl sm:text-2xl font-bold text-black mt-8 mb-4">9. Limitation of Liability</h2>
                             <p className="text-sm sm:text-base text-black/80 leading-relaxed mb-3">To the maximum extent permitted by law:</p>
                             <ul className="list-disc pl-6 space-y-2 text-sm sm:text-base text-black/70 mb-6">
                                 <li>Our total liability shall not exceed the total fees paid for services</li>
@@ -139,13 +142,13 @@ export default function TermsPage() {
                                 <li>We maintain professional liability insurance as required by law</li>
                             </ul>
 
-                            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-black mt-8 mb-4">10. Confidentiality</h2>
+                            <h2 className="text-xl sm:text-2xl font-bold text-black mt-8 mb-4">10. Confidentiality</h2>
                             <p className="text-sm sm:text-base text-black/80 leading-relaxed mb-6">We respect your privacy and maintain confidentiality of personal information, project details, financial information, and any information marked as confidential. We may share information with contractors and suppliers as necessary for project completion.</p>
 
-                            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-black mt-8 mb-4">11. Dispute Resolution</h2>
+                            <h2 className="text-xl sm:text-2xl font-bold text-black mt-8 mb-4">11. Dispute Resolution</h2>
                             <p className="text-sm sm:text-base text-black/80 leading-relaxed mb-6">In the event of a dispute, we encourage direct communication to resolve issues. Mediation may be pursued before legal action. Disputes shall be governed by the laws of the jurisdiction where our business is registered.</p>
 
-                            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-black mt-8 mb-4">12. Contact Information</h2>
+                            <h2 className="text-xl sm:text-2xl font-bold text-black mt-8 mb-4">12. Contact Information</h2>
                             <p className="text-sm sm:text-base text-black/80 leading-relaxed mb-3">If you have any questions about these Terms and Conditions, please contact us:</p>
                             <ul className="list-disc pl-6 space-y-2 text-sm sm:text-base text-black/70 mb-6">
                                 <li>Email: hello@aakar.com</li>

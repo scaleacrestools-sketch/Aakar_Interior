@@ -86,7 +86,7 @@ export default function TestimonialSection() {
   };
 
   return (
-    <section className="bg-[#F5F5F0] py-12 sm:py-16 md:py-20 overflow-hidden">
+    <section className="bg-[#F5F5F0] py-12 sm:py-16 md:py-16 overflow-hidden font-sans">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div
           className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center"
@@ -120,7 +120,7 @@ export default function TestimonialSection() {
 
           {/* Content */}
           <div className="max-w-xl space-y-6 sm:space-y-8">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight font-sans">
               WHAT PEOPLE SAY
               <br />
               ABOUT US
@@ -128,7 +128,7 @@ export default function TestimonialSection() {
 
             <p
               key={testimonials[current].text}
-              className="text-black/70 text-sm sm:text-base leading-relaxed animate-fadeSlide"
+              className="text-black/70 text-sm sm:text-base leading-relaxed animate-fadeSlide font-sans"
             >
               "{testimonials[current].text}"
             </p>
@@ -144,8 +144,8 @@ export default function TestimonialSection() {
                   className="w-10 h-10 sm:w-11 sm:h-11 rounded-full object-cover"
                 />
                 <div>
-                  <p className="font-medium text-sm sm:text-base">{testimonials[current].name}</p>
-                  <p className="text-xs sm:text-sm text-black/60">
+                  <p className="font-medium text-sm sm:text-base font-sans">{testimonials[current].name}</p>
+                  <p className="text-xs sm:text-sm text-black/60 font-sans">
                     {testimonials[current].role}
                   </p>
                 </div>
@@ -155,13 +155,13 @@ export default function TestimonialSection() {
               <div className="flex gap-2 sm:gap-3">
                 <button
                   onClick={prev}
-                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-black/30 flex items-center justify-center hover:bg-black hover:text-white transition text-sm sm:text-base"
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-black/30 flex items-center justify-center hover:bg-black hover:text-white transition text-sm sm:text-base font-sans"
                 >
                   ←
                 </button>
                 <button
                   onClick={next}
-                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-black/30 flex items-center justify-center hover:bg-black hover:text-white transition text-sm sm:text-base"
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-black/30 flex items-center justify-center hover:bg-black hover:text-white transition text-sm sm:text-base font-sans"
                 >
                   →
                 </button>
